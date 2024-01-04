@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>BitesofLove | Shopping Bag</title>
+    <link rel="stylesheet" href="bag.css">
+</head>
+
+<!--this is template for the cart-summary | creditcard-details payment page. 1.cart,delivery address etc 2.card pay-->
+<!--retain the personal particulars keyed into this page with cookie*-->
+<!--do not retain credit card details-->
+
+
+
+<!-- keep delivery data(checkout) in localstorage 1, 
+    2 transfer to *shipping|payment page -->
+<!-- x-logo cancel button eliminate the checkout details keyed in reload GONE -->
+<!-- alert messages 'close' button do not reload window for checkout page (details GONE) -->
+<!-- form button in fav list should transfer all data to bag ist & empty fav list -->
+<!-- condition: if login-ed, different single-panel fav & bag page -->
+
+
+<body>
+
+    <!-- Navbar -->
+    <!-- new -->
+
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="main.html"><img src="favicon.ico" width="24" height="24">BitesofLove</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navLinks">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="main.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="locations.html" class="nav-link">Locations</a></li>
+                <li class="nav-item"><a href="loginregister.html" class="nav-link"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        </svg><span id="member">Login|Register</span></a></li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+        </div>
+    </nav>
+
+    <!-- the none/block display of custom alert messages -->
+    <!-- the custom alert message box -->
+    <!-- <div id="customalert" class="customalert">
+        <p>Please fill in all required fields!</p>
+        <button onclick="closeCustomAlert()">Close</button>
+    </div>
+
+    <div id="emptybagalert" class="emptybagalert">
+        <p>Shopping Bag is Empty!</p>
+        <button onclick="closeEmptyBagAlert()">Close</button>
+    </div> -->
+
+    <!-- overlay to dim the background -->
+    <!-- <div id="overlay" class="overlay"></div>
+ -->
+
+    <div class="grid-container" style="padding: 100px; gap: 20px;">
+
+        <!-- BAG -->
+        <div class="grid-items" class="scroll-container" style="background-color: lemonchiffon; border-radius: 5%;">
+            <a href="main.html" style="padding-left: 20px;">Back to
+                Shopping</a>
+            <h1 style=" color: maroon; padding: 30px;">Shopping Bag Summary</h1>
+            <div id="scroll">
+                <div id="output"></div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <div id="bagCount"></div>
+                    <button id="toConfirm" style="display: none;">Confirm</button>
+                </div>
+
+                <div id="check"></div>
+            </div>
+        </div>
+
+
+        <!-- SHIPPING INFO -->
+        <div class="grid-items" style="background-color: lemonchiffon; padding: 50px; border-radius: 5%;">
+            <h1 style=" color: maroon; font-weight: bold;">Checkout</h1>
+
+            <form id="checkout">
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="firstname"></label>
+                        <input type="text" name="firstname" id="firstname" placeholder="FIRST NAME" style="width: 100%"
+                            required pattern="[a-zA-Z]+" title="Only letters are allowed">
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="lastname"></label>
+                        <input type="text" name="lastname" id="lastname" placeholder="LAST NAME" style="width: 100%"
+                            pattern="[a-zA-Z]+" title="Only letters are allowed">
+                    </div>
+                </div>
+
+                <div class="group">
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="EMAIL ADDRESS"
+                        title="Please enter a valid email address" pattern=".*@.*" autocomplete="email" required
+                        style="width: 100%;">
+                </div>
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="address1"></label>
+                        <input type="text" name="address1" placeholder="ADDRESS LINE 1" id="address1"
+                            style="width: 100%" required>
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="address2"></label>
+                        <input type="text" name="address2" placeholder="ADDRESS LINE 2" id="address2"
+                            style="width: 100%">
+                    </div>
+                </div>
+
+                <!--dropdown select-->
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="country"></label>
+                        <select name="country" id="country" style="width: 100%; height: 30px;" autocomplete="country"
+                            required>
+                            <option value="" disabled selected hidden>COUNTRY</option>
+                        </select>
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="postalcode"></label>
+                        <input type="text" name="postalcode" placeholder="ZIP/POSTAL CODE" id="postalcode"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" style="width: 100%"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="countrycode"></label>
+                        <input type="text" name="countrycode" placeholder="COUNTRY CODE (e.g. +1, +62)" id="countrycode"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" style="width: 100%"
+                            required>
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="mobile"></label>
+                        <input type="text" name="mobile" placeholder="MOBILE NUMBER" id="mobile" style="width: 100%"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" required>
+                    </div>
+                </div>
+
+                <!--calculations-->
+                <div class="return" style="padding-top: 30px; transform: translateX(15px);">
+                    <div class="row">
+                        <div style="padding-right: 20px;">Total Quantity</div>
+                        <div id="totalQuantity">0</div>
+                    </div>
+
+                    <div class="row" style="padding-top: 5px;">
+                        <label for="delivery" style="padding-right: 20px;">Delivery (2-4 days)</label>
+                        <input type="checkbox" id="delivery" name="delivery" value="delivery"
+                            style="transform: translateY(-5px);">
+                    </div>
+
+                    <div class="row" style="display: none" id="deliveryChargeDisplay">
+                        <div>Delivery Charges</div>
+                        <p>US$</p>
+                        <div class="deliveryCharge">15</div>
+                    </div>
+
+                    <div class="row">
+                        <div style="padding-right: 20px;">Total Price</div>
+                        <p>US$</p>
+                        <div id="totalPrice">0</div>
+                    </div>
+                </div>
+
+
+                <button class="buttonCheckout" onsubmit="validateForm()">CHECKOUT</button>
+
+
+            </form>
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="global.js"></script>
+    <script src="bag.js"></script>
+
+</body>
+
+<footer>
+    <button onclick="resetItemCount()">Reset Item Count</button>
+    <!--all rights reserved-->
+    BitesofLove © 2023. All Rights Reserved.
+
+</footer>
+
+</html>
