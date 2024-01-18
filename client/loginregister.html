@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>BitesofLove | Login/Register</title>
+    <link rel="stylesheet" href="loginregister.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <!--new-->
+
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: lemonchiffon">
+        <a class="navbar-brand" href="main.html"><img src="favicon.ico" width="24" height="24">BitesofLove</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navLinks">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="main.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="locations.html" class="nav-link">Locations</a></li>
+                <li class="nav-item"><a href="loginregister.html" class="nav-link"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        </svg>Login|Register</a></li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" id="searchForm">
+                <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <a href="favlogin.html">
+                <div id="textbackground"><span id="favQuantity">0</span></div><img src="heart.svg" width="24"
+                    height="24"><span id="smallscreen">Favorites</span>
+            </a>
+
+            <a href="bag.html">
+                <div id="textbackground"><span id="bagQuantity">0</span></div><img src="blackbag.svg" width="30"
+                    height="30"><span id="smallscreen">Shopping
+                    Bag</span>
+            </a>
+
+        </div>
+    </nav>
+
+
+    <div class="grid-container" style="padding: 100px; gap: 20px;">
+
+        <!-- LOGIN -->
+        <div class="grid-items" class="scroll-container"
+            style="background-color: lemonchiffon; border-radius: 5%; padding: 20px;">
+            <a href="main.html" style="padding-left: 20px;">Back to
+                Shopping</a>
+            <h1 style=" color: maroon; padding: 30px; font-weight: bold;">Login</h1>
+
+            <form id="login">
+
+                <div id="email" style="padding: 20px;">
+                    <label for="loginemail">EMAIL ADDRESS</label>
+                    <input type="email" name="user_credentials_email" id="loginemail" style="width: 100%;"
+                        autocomplete="email" required title="Please enter a valid email address" pattern=".*@.*">
+                </div>
+
+                <div id="password" style="padding: 20px">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <label for="loginpassword">PASSWORD</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="showpassword" name="user_credentials_password"
+                                onchange="togglePasswordVisibility()">
+                            <label for="showpassword">show password</label>
+                        </div>
+                    </div>
+
+                    <input type="password" name="loginpassword" id="loginpassword" style="width: 100%;" required>
+                </div>
+
+                <hr>
+
+                <button class="buttonLogin">LOGIN</button>
+
+            </form>
+
+        </div>
+
+
+        <!-- REGISTER -->
+        <div class="grid-items" style="background-color: lemonchiffon; padding: 50px; border-radius: 5%;">
+            <h1 style=" color: maroon; font-weight: bold;">Register Account</h1>
+
+            <form id="registrationForm" method="post">
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="firstname"></label>
+                        <input type="text" name="user_firstName" id="firstname" placeholder="FIRST NAME"
+                            style="width: 100%" required autocomplete="name" pattern="[a-zA-Z]+"
+                            title="Only letters are allowed">
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="lastname"></label>
+                        <input type="text" name="user_lastName" id="lastname" placeholder="LAST NAME"
+                            style="width: 100%" autocomplete="family-name" pattern="[a-zA-Z]+"
+                            title="Only letters are allowed">
+                    </div>
+                </div>
+
+                <div class="group">
+                    <label for="registeremail"></label>
+                    <input type="email" id="registeremail" name="user_email" pattern=".*@.*" placeholder="EMAIL ADDRESS"
+                        title="Please enter a valid email address" autocomplete="email" required style="width: 100%;">
+                </div>
+
+                <!-- verify passwords match -->
+
+                <div class="group">
+                    <label for="registerpassword"></label>
+                    <input type="text" name="registerpassword" id="registerpassword" style="width: 100%;"
+                        placeholder="PASSWORD" required value="">
+                </div>
+
+                <div class="group">
+                    <label for="reenterpassword"></label>
+                    <input type="password" name="reenterpassword" id="reenterpassword" style="width: 100%;"
+                        placeholder="RE-ENTER PASSWORD" required value="">
+                </div>
+                <span id="passwordError" style="color: red;"></span>
+
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="address1"></label>
+                        <input type="text" name="user_address1" placeholder="ADDRESS LINE 1" id="address1"
+                            style="width: 100%" required autocomplete="address-line1">
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="address2"></label>
+                        <input type="text" name="user_address2" placeholder="ADDRESS LINE 2" id="address2"
+                            style="width: 100%" autocomplete="address-line2">
+                    </div>
+                </div>
+
+                <!--dropdown select-->
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="country"></label>
+                        <select name="user_country" id="country" style="width: 100%; height: 30px;"
+                            autocomplete="country" required>
+                            <option value="" disabled selected hidden>COUNTRY</option>
+
+                        </select>
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="postalcode"></label>
+                        <input type="text" name="user_ZIP" placeholder="ZIP/POSTAL CODE" id="postalcode"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" style="width: 100%"
+                            required autocomplete="postal-code">
+                    </div>
+
+                </div>
+
+                <div class="grid-container" style="gap: 10px;">
+                    <div class="group grid-items">
+                        <label for="countrycode"></label>
+                        <input type="text" name="user_countryCode" placeholder="COUNTRY CODE" id="countrycode"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" style="width: 100%"
+                            required autocomplete="tel-country-code">
+                    </div>
+
+                    <div class="group grid-items">
+                        <label for="mobile"></label>
+                        <input type="text" name="user_contactNumber" placeholder="MOBILE NUMBER" id="mobile"
+                            pattern="[^a-zA-Z]+" title="Numbers and special characters only" style="width: 100%"
+                            required autocomplete="mobile">
+                    </div>
+                </div>
+
+                <br>
+                <hr>
+
+                <button type="submit" id="buttonregister">REGISTER</button>
+
+            </form>
+
+
+            <!-- this is for using bag.js -->
+            <div id="output" style="display: none;"></div>
+            <div id="bagCount" style="display: none;"></div>
+            <div id="delivery" style="display: none;"></div>
+            <div id="deliveryChargeDisplay" style="display: none;"></div>
+            <div id="totalPrice" style="display: none;"></div>
+            <div id="totalQuantity" style="display: none;"></div>
+
+
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="global.js"></script>
+    <script src="loginregister.js"></script>
+
+    <!-- for navbar bag/fav logos -->
+    <script src="bag.js"></script>
+
+</body>
+
+<footer>
+
+    <!--all rights reserved-->
+    BitesofLove © 2023. All Rights Reserved.
+
+</footer>
+
+</html>
