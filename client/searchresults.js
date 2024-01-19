@@ -245,26 +245,32 @@ function search() {
     //fetch keyword from localstorage
     var keyword = localStorage.getItem('searchKeyword');
     var originalkeyword = localStorage.getItem('originalsearchKeyword');
+    var updateCount = document.getElementById('count');
 
     document.getElementById('keyword').setAttribute("value", originalkeyword);
     document.getElementById('keyword').innerText = "'" + originalkeyword + "'";
 
     let indexArray = [];
+    let count = 0;
 
     for (let i = 0; i < nameArray.length; i++) {
         if (nameArray[i].toLowerCase().includes(keyword)) {
             indexArray.push(i);
+            count++;
         } else if (window.sharedData.productData[i].description.includes(keyword)) {
             indexArray.push(i);
+            count++;
         }
     }
 
     if (indexArray.length === 0 && keyword === '') {
         for (let i = 0; i < window.sharedData.productData.length; i++) {
             indexArray.push(i);
+            count++;
         }
     }
 
+    updateCount.innerText = count;
 
     // Call the render function here
     renderSearchResults(indexArray);
@@ -370,6 +376,17 @@ function renderSearchResults(indexArray) {
         var svgPath3 = "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z";
 
         var parent1 = document.getElementById(`overlay${index}`);
+        var parentExtra = document.createElement('div');
+        // Copy computed styles from parent1 to parentExtra
+        var computedStyles = window.getComputedStyle(parent1);
+
+        parentExtra.style.width = computedStyles.getPropertyValue('width');
+        parentExtra.style.height = computedStyles.getPropertyValue('height');
+        parentExtra.style.boxSizing = computedStyles.getPropertyValue('box-sizing');
+        // Add any other styles you want to copy...
+
+        // Append parentExtra to the same parent node as parent1
+        parent1.parentNode.appendChild(parentExtra);
         var parent2 = document.createElement('div');
 
         var a1 = document.createElement('a');
@@ -422,12 +439,24 @@ function renderSearchResults(indexArray) {
         a3.appendChild(containerDiv3);
 
         parent2.style.display = 'flex'; // Use flex display
-        parent2.appendChild(a1);
-        parent2.appendChild(a2);
-        parent2.appendChild(a3);
+        parent2.style.justifyContent = 'center';
+        parent2.style.flexDirection = 'row';
+        parent2.style.alignItems = 'center';
+        parent2.style.gridColumn = 2;
+        parent2.append(a1, a2, a3);
 
-        parent1.append(parent2);
+        parentExtra.style.display = "grid";
+        parentExtra.style.gridTemplateColumns = "repeat(3, 1fr)";
+        parentExtra.append(parent2);
+        parent1.append(parentExtra);
 
+        // Additional styling for debugging purposes
+        // parent2.style.border = '1px solid red'; // Add a border to see the size of the parent
+        // a1.style.border = '1px solid blue';     // Add a border to see the size of each child
+        // a2.style.border = '1px solid green';    // Add a border to see the size of each child
+        // a3.style.border = '1px solid orange';   // Add a border to see the size of each child
+        // parentExtra.style.border = '1px solid lemonchiffon';
+        // parent1.style.border = '1px solid lemonchiffon';
 
 
         a1.addEventListener('click', function (event) {
@@ -494,20 +523,40 @@ function renderSearchResults(indexArray) {
                 popuppanel.style.display = "none";
             });
 
-            a1.addEventListener('click', function (event) {
-                event.preventDefault();
-                renderSearchResults(indexArray);
-            });
 
-            a2.addEventListener('click', function (event) {
-                event.preventDefault();
-                renderSearchResults(indexArray);
-            });
+            setTimeout(function (event) {
+                popuppanel.style.display = "block";
+                popuppanel.hidden = false;
+                // Add a click event listener to the document
+                function closePopup(e) {
+                    // Check if the clicked element is outside the popup
+                    if (!popuppanel.contains(e.target) && e.target !== popuppanel) {
+                        popuppanel.hidden = true;
+                        popuppanel.style.display = "none";
+                        event.preventDefault();
+                        // Remove the click event listener after closing the popup
+                        document.removeEventListener("click", closePopup);
 
-            a3.addEventListener('click', function (event) {
-                event.preventDefault();
-                renderSearchResults(indexArray);
-            });
+                        a1.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            renderSearchResults(indexArray);
+                        });
+
+                        a2.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            renderSearchResults(indexArray);
+                        });
+
+                        a3.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            renderSearchResults(indexArray);
+                        });
+
+                    }
+
+                }
+                document.addEventListener("click", closePopup);
+            }, 0);
 
         }
 

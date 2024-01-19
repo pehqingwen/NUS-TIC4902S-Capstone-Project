@@ -212,3 +212,28 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';
 });
+
+
+
+function selectOption(selected) {
+    if (selected === "popularity") {
+        popularity();
+    } else if (selected === "startlow") {
+        lowToHigh();
+    } else if (selected === "starthigh") {
+        highToLow();
+    }
+}
+
+// function popularity() {
+
+// }
+
+function lowToHigh() {
+    //price
+
+}
+
+// function highToLow() {
+
+// }

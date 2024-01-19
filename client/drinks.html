@@ -68,16 +68,22 @@
         Brewed with the greatest care, don't hesitate to try out our extensive selection of drinks
     </h3>
 
+
+    <!-- sort selection -->
+    <!-- make the innerHTML mimic hardcode in html -> replace hardcode 4x pdts page with json ->
+    more javascript! -> really do filter function to sort and rearrange order (price) with new array -->
+
     <div id="split">
         <div id="sort">
             <p>Sort by: </p>
-            <select>
+            <select onchange="selectOption(this.value)">
                 <option selected value="popularity">Most Popular</option>
                 <option value="startlow">Price: Low to High</option>
                 <option value="starthigh">Price: High to Low</option>
             </select>
         </div>
     </div>
+
 
     <section class="behind">
         <div class="row">
