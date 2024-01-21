@@ -177,34 +177,34 @@ $('#searchForm').submit(function (event) {
 });
 
 
-function renderSearchResults(j) {
-    //use productData[j].name etc. 
-    resultsContainer.innerHTML = '';
-    var index = parseInt(j);
-    //create divs to append to resultsContainer 
-    var infoDiv = document.createElement('div');
+// function renderSearchResults(j) {
+//     //use productData[j].name etc. 
+//     resultsContainer.innerHTML = '';
+//     var index = parseInt(j);
+//     //create divs to append to resultsContainer 
+//     var infoDiv = document.createElement('div');
 
-    infoDiv.innerHTML = `
-    <div style="padding: 15px 0 0 0;">
-    <div class="col-lg-3 col-md-6">
-    <div class="grid">
-    <div class="grid-container">
-    <div style="width: 100%; height: 100%; position: relative; text-align: center; background-size: contain;">
-        <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
-            <img src="${productData[index].imagePath}" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; cursor: pointer; transition: .5s ease-in-out;">
-        </div>
+//     infoDiv.innerHTML = `
+//     <div style="padding: 15px 0 0 0;">
+//     <div class="col-lg-3 col-md-6">
+//     <div class="grid">
+//     <div class="grid-container">
+//     <div style="width: 100%; height: 100%; position: relative; text-align: center; background-size: contain;">
+//         <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+//             <img src="${productData[index].imagePath}" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; cursor: pointer; transition: .5s ease-in-out;">
+//         </div>
 
-        <div class="text" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 20px; z-index: 4; -webkit-backdrop-filter: grayscale(75%); backdrop-filter: grayscale(75%);  object-fit: cover; position: absolute;">
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-`;
+//         <div class="text" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 20px; z-index: 4; -webkit-backdrop-filter: grayscale(75%); backdrop-filter: grayscale(75%);  object-fit: cover; position: absolute;">
+//         </div>
+//     </div>
+//     </div>
+//     </div>
+//     </div>
+//     </div>
+// `;
 
-    resultsContainer.appendChild(infoDiv);
-}
+//     resultsContainer.appendChild(infoDiv);
+// }
 
 
 //some notes - innerHTML: /n/n ; innerText: /n ; textContent: no space 
@@ -290,7 +290,7 @@ function renderSearchResults(indexArray) {
         <div style="text-align: center;" class="set">
     <div id="${index}" class="container" style="position: relative; display: inline-block; background-color: transparent;"><div id="overlay${index}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); white-space: nowrap;"></div><a href="#"><img src="${window.sharedData.productData[index].imagePath}" width="350" height="230"></a></div>
     <div style="color: white;">${window.sharedData.productData[index].name}</div>
-    <div style="color: white;">${window.sharedData.productData[index].price.toFixed(2)}</div>
+    <div style="color: white;">$${window.sharedData.productData[index].price.toFixed(2)}</div>
         <br>
         </div>
     `;
@@ -503,8 +503,8 @@ function renderSearchResults(indexArray) {
                 <div id="inner">
                     <a href="#" id="close">X</a>
                     <img src="${window.sharedData.productData[index].imagePath}" style="display: flex; border-radius: 50%; align-items: center; width: 90px; height: 90px;">
-                    <p style="font-weight: bold; color: orange;">${window.sharedData.productData[index].name}</p>
-                    <p style="color: goldenrod; font-weight: bold;">${window.sharedData.productData[index].price.toFixed(2)}</p>
+                    <p style="font-weight: bold; color: orange;">${window.sharedData.productData[index].name} (${window.sharedData.productData[index].code})</p>
+                    <p style="color: goldenrod; font-weight: bold;">$${window.sharedData.productData[index].price.toFixed(2)}</p>
                     <p style="color: white;">${window.sharedData.productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
                     <a href="#" id="fav${index}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>

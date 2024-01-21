@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="cakes.css">
+    <title>BitesofLove | Cakes&Tarts</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <!--new-->
+
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: lemonchiffon">
+        <a class="navbar-brand" href="main.html"><img src="favicon.ico" width="24" height="24">BitesofLove</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navLinks">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="main.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="locations.html" class="nav-link">Locations</a></li>
+                <li class="nav-item"><a href="loginregister.html" class="nav-link"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        </svg>Login|Register</a></li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" id="searchForm">
+                <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <a href="favlogin.html">
+                <div id="textbackground"><span id="favQuantity">0</span></div><img src="heart.svg" width="24"
+                    height="24"><span id="smallscreen">Favorites</span>
+            </a>
+
+            <a href="bag.html">
+                <div id="textbackground"><span id="bagQuantity">0</span></div><img src="blackbag.svg" width="30"
+                    height="30"><span id="smallscreen">Shopping
+                    Bag</span>
+            </a>
+
+        </div>
+    </nav>
+
+
+    <div class="card mx-auto" style="width: 8rem; background-color: maroon; color: lemonchiffon">
+        <img class="card-img-top" src="favicon.ico" alt="companyLogo">
+        <div class="card-body">
+            <h5 class="card-title">BitesofLove</h5>
+        </div>
+    </div>
+
+    <h1>
+        CAKES & TARTS
+    </h1>
+    <h3>
+        Baked with dedication & skills, choose from a wide selection of exotic cake flavors
+    </h3>
+
+    <section class="behind">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/31.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav31(event)"><span id="favItem31"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+
+                                <a href="#" id="info" onclick="show31(event)"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="lightcoral" class="bi bi-info-circle"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+
+                                <a href="#" onclick="addItemToCart31(event)"><span id="bagItem31"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+
+                            </div>
+
+
+                            <div id="overlay" class="overlay" hidden></div>
+
+                            <div class="popup" id="popup31" hidden>
+                                <a href="" onclick="hide31(event)" id="close">X</a>
+                                <div class="grid-container" id="outer">
+
+                                    <div class="grid-items" id="inner">
+                                        <div class="split">
+
+                                            <div class="one">
+                                                <img src="pics3/31.jpg">
+                                            </div>
+                                            <div class="two">
+                                                <p id="name">Salted Caramel Cake</p>
+                                                <p id="code">C001</p>
+                                                <p id="price">9.50</p>
+                                                <select name="quantity" id="1-100-31"
+                                                    onchange="storeSelectedItemQuantity(this.value)"></select>
+                                                <button id="addToBag" onclick="addItemToCart31(event)"><span
+                                                        id="bagItem31"></span>ADD
+                                                    TO BAG</button>
+                                                <br>
+                                                <a href="#" id="addToFav" onclick="addItemToFav31(event)"><span
+                                                        id="favItem31"></span>ADD TO FAVORITES</a>
+                                                <p id="pdt">Product Description</p>
+                                                <p id="description">A slice of cake full of salted caramel goodness, for
+                                                    you or your loved one!</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Salted Caramel Cake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$9.50</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/32.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav32(event)"><span id="favItem32"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show32(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart32(event)"><span id="bagItem32"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+
+
+                            <div id="overlay" class="overlay" hidden></div>
+
+                            <div class="popup" id="popup32" hidden>
+                                <a href="" onclick="hide32(event)" id="close">X</a>
+                                <div class="grid-container" id="outer">
+
+                                    <div class="grid-items" id="inner">
+                                        <div class="split">
+
+                                            <div class="one">
+                                                <img src="pics3/32.jpg">
+                                            </div>
+                                            <div class="two">
+                                                <p id="name">Neapolitan Layered Cake</p>
+                                                <p id="code">C002</p>
+                                                <p id="price">72.00</p>
+                                                <select name="quantity" id="1-100-32"
+                                                    onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                    id="addToBag" onclick="addItemToCart32(event)"><span
+                                                        id="bagItem32"></span>ADD
+                                                    TO BAG</button>
+                                                <br>
+                                                <a href="#" id="addToFav" onclick="addItemToFav32(event)"><span
+                                                        id="favItem32"></span>ADD TO FAVORITES</a>
+                                                <p id="pdt">Product Description</p>
+                                                <p id="description">A tri-layered cake consisting of chocolate,
+                                                    strawberry, and vanilla. Enjoy the mixture of different flavours in
+                                                    one cake!</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Neapolitan Layered Cake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$72.00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/33.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav33(event)"><span id="favItem33"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show33(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart33(event)"><span id="bagItem33"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup33" hidden>
+                            <a href="" onclick="hide33(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/33.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Zesty Lemon Cake</p>
+                                            <p id="code">C003</p>
+                                            <p id="price">10.50</p>
+                                            <select name="quantity" id="1-100-33"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart33(event)"><span
+                                                    id="bagItem33"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav33(event)"><span
+                                                    id="favItem33"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Finished with a dollop of fresh lemon marmalade, the
+                                                baked lemon crust of the cake crumble under the spoon to reveal a
+                                                filling of layered lemon delight! </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Zesty Lemon Cake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$10.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/34.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav34(event)"><span id="favItem34"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show34(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart34(event)"><span id="bagItem34"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup34" hidden>
+                            <a href="" onclick="hide34(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/34.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Dark Chocolate Indulgence</p>
+                                            <p id="code">C004</p>
+                                            <p id="price">9.50</p>
+                                            <select name="quantity" id="1-100-34"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart34(event)"><span
+                                                    id="bagItem34"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav34(event)"><span
+                                                    id="favItem34"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Made with care with 65% dark chocolate, and dark
+                                                chocolate fudge, chocolate lovers will love this.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Dark Chocolate Indulgence
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$9.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/35.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav35(event)"><span id="favItem35"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show35(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart35(event)"><span id="bagItem35"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup35" hidden>
+                            <a href="" onclick="hide35(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/35.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Sakura Tea Vanilla Cake</p>
+                                            <p id="code">C005</p>
+                                            <p id="price">10.00</p>
+                                            <select name="quantity" id="1-100-35"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart35(event)"><span
+                                                    id="bagItem35"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav35(event)"><span
+                                                    id="favItem35"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Infused with sakura flavored tea, the vanilla chiffon
+                                                cake is also topped and layered with sakura essence buttercream. </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Sakura Tea Vanilla Cake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$10.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/36.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav36(event)"><span id="favItem36"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show36(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart36(event)"><span id="bagItem36"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup36" hidden>
+                            <a href="" onclick="hide36(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/36.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Red Velvet & Cherries Cake</p>
+                                            <p id="code">C006</p>
+                                            <p id="price">100.50</p>
+                                            <select name="quantity" id="1-100-36"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart36(event)"><span
+                                                    id="bagItem36"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav36(event)"><span
+                                                    id="favItem36"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">The velvety red cake with vanilla cream and cherries
+                                                gives an enticing impression. </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Red Velvet & Cherries Cake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$100.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/37.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav37(event)"><span id="favItem37"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show37(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart37(event)"><span id="bagItem37"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup37" hidden>
+                            <a href="" onclick="hide37(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/37.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Matcha Mont Blanc Tart</p>
+                                            <p id="code">C007</p>
+                                            <p id="price">12.50</p>
+                                            <select name="quantity" id="1-100-37"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart37(event)"><span
+                                                    id="bagItem37"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav37(event)"><span
+                                                    id="favItem37"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Baked fresh daily with matcha powder imported from
+                                                Japan, the mont blanc is worth trying!
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Matcha Mont Blanc Tart
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$12.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/38.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav38(event)"><span id="favItem38"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show38(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart38(event)"><span id="bagItem38"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup38" hidden>
+                            <a href="" onclick="hide38(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/38.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Lemony Meringue Tart</p>
+                                            <p id="code">C008</p>
+                                            <p id="price">12.00</p>
+                                            <select name="quantity" id="1-100-38"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart38(event)"><span
+                                                    id="bagItem38"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav38(event)"><span
+                                                    id="favItem38"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">The citrusy taste of the lemon used in the meringue
+                                                enhances the sweetness and fluffiness of it.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Lemony Meringue Tart
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$12.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/39.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav39(event)"><span id="favItem39"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show39(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart39(event)"><span id="bagItem39"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup39" hidden>
+                            <a href="" onclick="hide39(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/39.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Mango Passionfruit Tart</p>
+                                            <p id="code">C009</p>
+                                            <p id="price">10.50</p>
+                                            <select name="quantity" id="1-100-39"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart39(event)"><span
+                                                    id="bagItem39"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav39(event)"><span
+                                                    id="favItem39"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Mango and passionfruit are the best of tropical fruits
+                                                combination there can be for just a tart. </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Mango Passionfruit Tart
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$10.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/40.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav40(event)"><span id="favItem40"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show40(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart40(event)"><span id="bagItem40"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup40" hidden>
+                            <a href="" onclick="hide40(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/40.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Blackberry Cheesecake Tart</p>
+                                            <p id="code">C010</p>
+                                            <p id="price">13.00</p>
+                                            <select name="quantity" id="1-100-40"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart40(event)"><span
+                                                    id="bagItem40"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav40(event)"><span
+                                                    id="favItem40"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">If you like cheese, the gentle subtle taste of the
+                                                blackberries will bring out the flavours of the cheesecake tart. </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Blackberry Cheesecake Tart
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$13.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/41.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav41(event)"><span id="favItem41"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show41(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart41(event)"><span id="bagItem41"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup41" hidden>
+                            <a href="" onclick="hide41(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/41.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Pistachio Strawberry Tart</p>
+                                            <p id="code">C011</p>
+                                            <p id="price">9.50</p>
+                                            <select name="quantity" id="1-100-41"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart41(event)"><span
+                                                    id="bagItem41"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav41(event)"><span
+                                                    id="favItem41"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">The pistachios and strawberries go so well together, you
+                                                won't believe it!</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Pistachio Strawberry Tart
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$9.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/42.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav42(event)"><span id="favItem42"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show42(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart42(event)"><span id="bagItem42"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup42" hidden>
+                            <a href="" onclick="hide42(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/42.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Strawberry Cheesecake</p>
+                                            <p id="code">C012</p>
+                                            <p id="price">95.00</p>
+                                            <select name="quantity" id="1-100-42"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart42(event)"><span
+                                                    id="bagItem42"></span>ADD
+                                                TO BAG</button>
+                                            <br>
+                                            <a href="#" id="addToFav" onclick="addItemToFav42(event)"><span
+                                                    id="favItem42"></span>ADD TO FAVORITES</a>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Topped with fresh strawberries atop strawberry sauce and
+                                                gelatin, the cheesecake and crispy base crust combination shall not
+                                                disappoint anyone. </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Strawberry Cheesecake
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$95.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/43.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav43(event)"><span id="favItem43"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show43(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart43(event)"><span id="bagItem43"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup43" hidden>
+                            <a href="" onclick="hide43(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/43.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Giftbox of 4s</p>
+                                            <p id="code">C013</p>
+                                            <p id="price">36.00</p>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Flavor selection: Choose up to 4 different flavors (9
+                                                unique choices in total)</p>
+
+                                            <select name="cake" id="cake1" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice1(this)">
+                                                <option value="" disabled selected hidden>Choice 1</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake2" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice2(this)">
+                                                <option value="" disabled selected hidden>Choice 2</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake3" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice3(this)">
+                                                <option value="" disabled selected hidden>Choice 3</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake4" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice4(this)">
+                                                <option value="" disabled selected hidden>Choice 4</option>
+                                            </select>
+                                            <br>
+
+                                            <a href="#" id="addToFav" onclick="addItemToFav43(event)"><span
+                                                    id="favItem43"></span>ADD TO FAVORITES</a>
+                                            <br>
+
+                                            <select name="quantity" id="1-100-43"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart43(event)"><span
+                                                    id="bagItem43"></span>ADD
+                                                TO BAG</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Giftbox of 4s
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$36.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/44.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav44(event)"><span id="favItem44"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show44(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart44(event)"><span id="bagItem44"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup44" hidden>
+                            <a href="" onclick="hide44(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/44.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Giftbox of 6s</p>
+                                            <p id="code">C014</p>
+                                            <p id="price">50.00</p>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Flavor selection: Choose up to 6 different flavors (9
+                                                unique choices in total)</p>
+
+                                            <select name="cake" id="cake5" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice5(this)">
+                                                <option value="" disabled selected hidden>Choice 1</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake6" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice6(this)">
+                                                <option value="" disabled selected hidden>Choice 2</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake7" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice7(this)">
+                                                <option value="" disabled selected hidden>Choice 3</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake8" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice8(this)">
+                                                <option value="" disabled selected hidden>Choice 4</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake9" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice9(this)">
+                                                <option value="" disabled selected hidden>Choice 5</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake10" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice10(this)">
+                                                <option value="" disabled selected hidden>Choice 6</option>
+                                            </select>
+                                            <br>
+
+                                            <a href="#" id="addToFav" onclick="addItemToFav44(event)"><span
+                                                    id="favItem44"></span>ADD TO FAVORITES</a>
+                                            <br>
+                                            <br>
+                                            <select name="quantity" id="1-100-44"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart44(event)"><span
+                                                    id="bagItem44"></span>ADD
+                                                TO BAG</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Giftbox of 6s
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$50.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="grid">
+                    <div class="grid-container">
+                        <div class="grid-items">
+                            <div class="image">
+                                <img src="pics3/45.jpg">
+                            </div>
+                            <div class="text">
+                                <a href="#" onclick="addItemToFav45(event)"><span id="favItem45"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO FAVORITES</p>
+                                </a>
+                                <a href="#" onclick="show45(event)"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" fill="lightcoral" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">INFORMATION</p>
+                                </a>
+                                <a href="#" onclick="addItemToCart45(event)"><span id="bagItem45"></span><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="lightcoral"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                                    </svg>
+                                    <p style="padding: 10px 0 0 0; color: lightcoral;">ADD TO BAG</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div id="overlay" class="overlay" hidden></div>
+
+                        <div class="popup" id="popup45" hidden>
+                            <a href="" onclick="hide45(event)" id="close">X</a>
+                            <div class="grid-container" id="outer">
+
+                                <div class="grid-items" id="inner">
+                                    <div class="split">
+
+                                        <div class="one">
+                                            <img src="pics3/45.jpg">
+                                        </div>
+                                        <div class="two">
+                                            <p id="name">Giftbox of 8s</p>
+                                            <p id="code">C015</p>
+                                            <p id="price">63.00</p>
+                                            <p id="pdt">Product Description</p>
+                                            <p id="description">Flavor selection: Choose up to 8 different flavors (9
+                                                unique choices in total)</p>
+
+                                            <select name="cake" id="cake11" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice11(this)">
+                                                <option value="" disabled selected hidden>Choice 1</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake12" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice12(this)">
+                                                <option value="" disabled selected hidden>Choice 2</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake13" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice13(this)">
+                                                <option value="" disabled selected hidden>Choice 3</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake14" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice14(this)">
+                                                <option value="" disabled selected hidden>Choice 4</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake15" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice15(this)">
+                                                <option value="" disabled selected hidden>Choice 5</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake16" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice16(this)">
+                                                <option value="" disabled selected hidden>Choice 6</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake17" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice17(this)">
+                                                <option value="" disabled selected hidden>Choice 7</option>
+                                            </select>
+                                            <br>
+
+                                            <select name="cake" id="cake18" style="width: 100%; height: 30px;"
+                                                autocomplete="cake" required onchange="storeChoice18(this)">
+                                                <option value="" disabled selected hidden>Choice 8</option>
+                                            </select>
+                                            <br>
+
+                                            <a href="#" id="addToFav" onclick="addItemToFav45(event)"><span
+                                                    id="favItem45"></span>ADD TO FAVORITES</a>
+                                            <br>
+
+                                            <select name="quantity" id="1-100-45"
+                                                onchange="storeSelectedItemQuantity(this.value)"></select> <button
+                                                id="addToBag" onclick="addItemToCart45(event)"><span
+                                                    id="bagItem45"></span>ADD
+                                                TO BAG</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: white; font-size: 20px; padding: 5px 0 0 0">
+                                Giftbox of 8s
+                            </p>
+                        </div>
+                        <div class="grid-items" style="text-align: center;">
+                            <p style="color: whitesmoke; font-size: 18px; padding: 5px 0 0 0">$63.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="cakes.js"></script>
+    <script src="bag.js"></script>
+
+
+</body>
+
+<footer>
+    <!--all rights reserved-->
+    BitesofLove © 2023. All Rights Reserved.
+
+</footer>
+
+</html>

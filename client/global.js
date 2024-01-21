@@ -131,22 +131,3 @@ window.sharedData = {
     ]
 
 };
-
-// //creating a .json file of product data automatedly for searchbar
-
-// const fs = require('fs');
-
-// // Function to convert an object to JSON
-// function convertObjectToJson(obj) {
-//     return JSON.stringify(obj, null, 2);
-// }
-
-// // Append each product to the same JSON file
-// const jsonDataArray = window.sharedData.productData.map(product => convertObjectToJson(product));
-
-// const fileName = 'allProducts.json';
-
-// fs.appendFile(fileName, jsonDataArray.join('\n'), (err) => {
-//     if (err) throw err;
-//     console.log(`Data has been appended to ${fileName}.`);
-// });

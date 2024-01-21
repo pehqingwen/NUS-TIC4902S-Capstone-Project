@@ -467,27 +467,3 @@ header p {
     color: lemonchiffon;
     padding-right: 10px;
 }
-
-/* popup styling */
-
-#background {
-    position: fixed;
-    width: 300px;
-    left: 50%;
-    height: 315px;
-    top: 50%;
-    z-index: 20;
-    background-color: #000;
-    transform: translate(-50%, -50%);
-}
-
-#close {
-    font-size: x-large;
-    float: right;
-}
-
-#inner {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-}

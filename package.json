@@ -1,22 +1,32 @@
 {
-  "name": "nus-tic4902s-capstone-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.4",
-    "cheerio": "^1.0.0-rc.12",
-    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.2",
+    "color": "^4.2.3",
+    "colors": "^1.4.0",
     "express": "^4.18.2",
-    "jsdom": "^23.0.1",
+    "express-g": "^1.0.3",
+    "franc": "^6.2.0",
+    "langs": "^2.0.0",
+    "mongodb": "^6.3.0",
     "mysql": "^2.18.1",
-    "node-fetch": "^2.7.0",
-    "readability": "^0.1.0"
-  }
+    "react-bootstrap": "^2.9.0"
+  },
+  "name": "bitesoflove",
+  "version": "1.0.0",
+  "description": "school final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "pehqingwen"
+  },
+  "keywords": [
+    "webapp"
+  ],
+  "author": "eve",
+  "license": "SEE LICENSE IN C:\\Users\\pehqi\\OneDrive\\Documents\\NUS-TIC4902S-Capstone-Project",
+  "devDependencies": {}
 }
