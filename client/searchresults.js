@@ -177,6 +177,55 @@ $('#searchForm').submit(function (event) {
 });
 
 
+//NOT the same functionality here (uses array_index here, not array)
+// filter/sorting function 
+
+function selectOption(selected) {
+    if (selected === "popularity") {
+        popularity();
+    } else if (selected === "startlow") {
+        lowToHigh();
+    } else if (selected === "starthigh") {
+        highToLow();
+    }
+}
+
+// function popularity() {
+
+// }
+
+
+// function to call arrange prices by ascending order
+function lowToHigh() {
+    sortPriceAscending(productData);
+}
+
+function sortPriceAscending(productData) {
+    // console.log('Sorting by price in ascending order...');
+    productData.sort(function (a, b) {
+        return a.price - b.price;
+    });
+    // console.log('Sorted productData:', productData);
+    renderBonbons(productData);
+}
+
+
+// function to call arrange prices by ascending order
+function highToLow() {
+    sortPriceDescending(productData);
+}
+
+function sortPriceDescending(productData) {
+    console.log('Sorting by price in descending order...');
+    productData.sort(function (a, b) {
+        return b.price - a.price;
+    });
+    console.log('Sorted productData:', productData);
+    renderBonbons(productData);
+}
+
+
+
 // function renderSearchResults(j) {
 //     //use productData[j].name etc. 
 //     resultsContainer.innerHTML = '';
@@ -632,7 +681,7 @@ function addItemToBag(pdindex) {
 
 // Access data from local storage
 var localStorageData = getAllLocalStorageData();
-console.log(localStorageData);
+// console.log(localStorageData);
 
 // Function to get all data from local storage
 function getAllLocalStorageData() {

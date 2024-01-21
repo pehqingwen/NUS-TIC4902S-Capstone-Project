@@ -479,6 +479,23 @@ header p {
     display: flex;
 }
 
+/*sort selection*/
+
+#sort {
+    display: flex;
+    justify-content: flex-start;
+    grid-column: 4;
+}
+
+#split {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#sort p {
+    color: lemonchiffon;
+    padding-right: 10px;
+}
 
 /* popup styling */
 

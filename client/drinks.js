@@ -108,11 +108,25 @@ renderDrinks(productData);
 
 
 function renderDrinks(productData) {
+
     var drinksdisplay = document.getElementById('drinks');
     drinksdisplay.innerHTML = '';
 
     drinksdisplay.style.display = 'grid';
-    drinksdisplay.style.gridTemplateColumns = 'repeat(4, 1fr)';
+
+    //responsive display 
+    window.addEventListener('resize', function () {
+        if (window.innerWidth <= 767) {
+            drinksdisplay.style.gridTemplateColumns = 'repeat(1, 1fr)';
+        } else if (window.innerWidth > 767 && window.innerWidth <= 991) {
+            drinksdisplay.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        } else if (window.innerWidth > 991 && window.innerWidth <= 1200) {
+            drinksdisplay.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        } else {
+            drinksdisplay.style.gridTemplateColumns = 'repeat(4, 1fr)';
+        }
+    });
+
 
     for (let u = 0; u < productData.length; u++) {
 
@@ -120,7 +134,10 @@ function renderDrinks(productData) {
 
         infoDiv.innerHTML = `
         <div style="text-align: center;" class="set">
-    <div id="${u}" class="container" class="col-lg-3 col-md-6 relative-container" style="position: relative; display: inline-block; background-color: transparent;"><div id="overlay${u}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); white-space: nowrap;"></div><img src="${productData[u].imagePath}" width="350" height="230"></div>
+    <div id="${u}" style="position: relative; display: inline-block; background-color: transparent;">
+        <div id="overlay${u}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); white-space: nowrap;"></div>
+        <img src="${productData[u].imagePath}" width="350" height="230">
+    </div>
     <div style="color: white;">${productData[u].name}</div>
     <div style="color: white;">$${productData[u].price.toFixed(2)}</div>
         <br>
