@@ -41,21 +41,7 @@ function resetItemCount() {
 
 
 const productData = [
-    { id: 16, name: 'Tropical Passionfruit', code: 'B001', price: 10.50, quantity: 1, imagePath: 'pics2/16.jpg', description: 'Anticipate the burst of passionfruit goodness from this exotic flavour found none other than here!' },
-    { id: 17, name: 'Citrus Orange', code: 'B002', price: 9.50, quantity: 1, imagePath: 'pics2/17.jpg', description: 'A classic citrus flavour from a long time ago, you will not be disappointed with our shop\'s version!' },
-    { id: 18, name: 'Zesty Lemon', code: 'B003', price: 10.50, quantity: 1, imagePath: 'pics2/18.jpg', description: 'A tangy delectable sour tinge is always good in a dessert for after meals! Just imagine the lack of zest!' },
-    { id: 19, name: 'Dark Chocolate', code: 'B004', price: 9.50, quantity: 1, imagePath: 'pics2/19.jpg', description: 'The all original dark chocolate everyone knows about.' },
-    { id: 20, name: 'Rum & Cherries', code: 'B005', price: 12.00, quantity: 1, imagePath: 'pics2/20.jpg', description: 'Don\'t be guilty to try out a little rum once in a while! This rum bonbon mixed with chocolate and cherries will leave you craving for more.' },
-    { id: 21, name: 'White Tea & Berries', code: 'B006', price: 11.50, quantity: 1, imagePath: 'pics2/21.jpg', description: 'Infused with white tea with berries thrown into the mix, this bonbon is a sure hit amongst tea lovers.' },
-    { id: 22, name: 'Japanese Sakura', code: 'B007', price: 12.50, quantity: 1, imagePath: 'pics2/22.jpg', description: 'No longer a seasonal specialty flavour, be sure to try this out whenever you feel a twang of longing to see cherry blossoms!' },
-    { id: 23, name: 'Black Tea with Mango', code: 'B008', price: 12.00, quantity: 1, imagePath: 'pics2/23.jpg', description: 'Another popular recommendation for tea lovers, black tea now comes with a fruity pal: mango. Don\'t miss this fruit and tea combination!' },
-    { id: 24, name: 'Coffee & Cookies', code: 'B009', price: 10.50, quantity: 1, imagePath: 'pics2/24.jpg', description: 'Another flavour with a unique twist to the classic cookies and cream. This time, coffee decides to be the other half!' },
-    { id: 25, name: 'White Chocolate with Rose', code: 'B010', price: 13.00, quantity: 1, imagePath: 'pics2/25.jpg', description: 'The only white chocolate flavour amongst all bonbons, don\'t underestimate its uniqueness! It comes together marvelously well with fresh rose petals.' },
-    { id: 26, name: 'Salted Caramel with Coffee', code: 'B011', price: 9.50, quantity: 1, imagePath: 'pics2/26.jpg', description: 'Salted caramel is never a lonely solo flavour again, with the companionship of coffee.' },
-    { id: 27, name: 'Black Forest', code: 'B012', price: 11.00, quantity: 1, imagePath: 'pics2/27.jpg', description: 'Never forget the original classic of dark chocolate with berries.' },
-    { id: 28, name: 'Box Set of 5s', code: 'B013', price: 40.00, quantity: 1, imagePath: 'pics2/28.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', choice5: 'Choice 5', description: 'Flavour selection: Choose any 5 flavors from our collection of 12 unique choices!' },
-    { id: 29, name: 'Box Set of 12s', code: 'B014', price: 90.00, quantity: 1, imagePath: 'pics2/29.jpg', description: 'Flavor selection: One of each unique flavor listed (12 unique flavors in total)' },
-    { id: 30, name: 'Box Set of 25s', code: 'B015', price: 199.00, quantity: 1, imagePath: 'pics2/30.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', choice5: 'Choice 5', description: 'Flavor selection: Choose up to 5 different flavors (12 unique flavors in total)' }
+
 ];
 
 
@@ -78,36 +64,50 @@ function selectOption(selected) {
 
 // function to call arrange prices by ascending order
 function lowToHigh() {
-    sortPriceAscending(productData);
+    sortPriceAscending();
 }
 
-function sortPriceAscending(productData) {
-    // console.log('Sorting by price in ascending order...');
-    productData.sort(function (a, b) {
-        return a.price - b.price;
-    });
-    // console.log('Sorted productData:', productData);
+function sortPriceAscending() {
+    productData.length = 0;
+    window.sharedData.bonbonsData.sort((a, b) => a.price - b.price);
+    for (const item of window.sharedData.bonbonsData) {
+        productData.push(item);
+    }
+    // console.log(productData);
     renderBonbons(productData);
 }
 
 
 // function to call arrange prices by ascending order
 function highToLow() {
-    sortPriceDescending(productData);
+    sortPriceDescending();
 }
 
-function sortPriceDescending(productData) {
-    console.log('Sorting by price in descending order...');
-    productData.sort(function (a, b) {
-        return b.price - a.price;
-    });
-    console.log('Sorted productData:', productData);
+function sortPriceDescending() {
+    productData.length = 0;
+    window.sharedData.bonbonsData.sort((a, b) => b.price - a.price);
+    for (const item of window.sharedData.bonbonsData) {
+        productData.push(item);
+    }
+    console.log(productData);
     renderBonbons(productData);
+}
+
+
+// function to add product details into productData[] from global.js
+function loadFromShared() {
+    for (let i = 0; i < window.sharedData.bonbonsData.length; i++) {
+        productData.push(window.sharedData.bonbonsData[i]);
+    }
+
+    // check
+    console.log(productData);
 }
 
 
 //call responsive function when initial loading
 window.addEventListener('load', function () {
+    loadFromShared();
     renderBonbons(productData);
 });
 
@@ -320,7 +320,7 @@ function renderBonbons(productData) {
         a1.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToFav(u + 16);
+            addItemToFav(u);
             console.log('testing0');
 
         });
@@ -338,7 +338,7 @@ function renderBonbons(productData) {
         a3.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToBag(u + 16);
+            addItemToBag(u);
             console.log('testing2');
 
         });
@@ -349,8 +349,6 @@ function renderBonbons(productData) {
             let popuppanel = document.querySelector('.popuppanel');
             popuppanel.hidden = false;
             popuppanel.style.display = "block";
-
-            var itemId = index + 16;
 
             let searchlist = '';
             let infoDiv =
@@ -363,8 +361,8 @@ function renderBonbons(productData) {
                     <p style="color: goldenrod; font-weight: bold;">$${productData[index].price.toFixed(2)}</p>
                     <p style="color: white;">${productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
-                    <a href="#" id="fav${itemId}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${itemId});">ADD TO FAVORITES</a>
-                    <button id="bag${itemId}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${itemId});">ADD TO BAG</button>
+                    <a href="#" id="fav${productData[index].id}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
+                    <button id="bag${productData[index].id}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
                 </div>
             </div>
             `;
@@ -445,15 +443,14 @@ function renderBonbons(productData) {
 
 
 //code for adding product (qty:1) from popup to FAV
-function addItemToFav(pdindex) { //pdindex is 16-30 for bonbons
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+function addItemToFav(pdindex) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToFav";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("favItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("favItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('favQuantity', newCount);
@@ -467,14 +464,13 @@ function addItemToFav(pdindex) { //pdindex is 16-30 for bonbons
 
 //code for adding product (qty:1) from popup to BAG
 function addItemToBag(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToBag";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("bagItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("bagItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('bagQuantity', newCount);
@@ -488,7 +484,7 @@ function addItemToBag(pdindex) {
 
 // Access data from local storage
 var localStorageData = getAllLocalStorageData();
-console.log(localStorageData);
+// console.log(localStorageData);
 
 // Function to get all data from local storage
 function getAllLocalStorageData() {
@@ -514,8 +510,8 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';

@@ -101,7 +101,7 @@ function resetItemCount() {
 //some notes - innerHTML: /n/n ; innerText: /n ; textContent: no space 
 
 
-// search bar 
+// search bar
 // Add an event listener to the form to handle form submission
 document.getElementById('searchForm').addEventListener('submit', function (event) {
     // Prevent the default form submission
@@ -112,10 +112,9 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';
 });
-

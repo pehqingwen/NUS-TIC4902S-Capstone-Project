@@ -40,22 +40,9 @@ function resetItemCount() {
 }
 
 
+
 const productData = [
-    { id: 1, name: 'Orange Citrus Burst', code: 'M001', price: 6.50, quantity: 1, imagePath: 'pics1/1.jpg', description: 'Made with orange freshly grown and harvested at prime growing season' },
-    { id: 2, name: 'Pink Strawberry Swirl', code: 'M002', price: 7.50, quantity: 1, imagePath: 'pics1/2.jpg', description: 'Made with fresh strawberries from Hokkaido' },
-    { id: 3, name: 'Zesty Lemon Thrill', code: 'M003', price: 7.50, quantity: 1, imagePath: 'pics1/3.jpg', description: 'Using freshly squeezed lemons, the ganache filling of this macaron consists of jam, lemon juice and cream.' },
-    { id: 4, name: 'Dark Chocolate Delight', code: 'M004', price: 7.50, quantity: 1, imagePath: 'pics1/4.jpg', description: 'For all-time chocolate lovers, you will want to know this macaron\'s ganache is mixed with lots of 65% dark chocolate goodness!' },
-    { id: 5, name: 'Chewy Candy Blues', code: 'M005', price: 7.50, quantity: 1, imagePath: 'pics1/5.jpg', description: 'Artificially colored blue, this chap\'s striking color will not make you regret its exquisite flavour! Note: chewy candies included in ganache.' },
-    { id: 6, name: 'Milo', code: 'M006', price: 7.50, quantity: 1, imagePath: 'pics1/6.jpg', description: 'Made with the ever popular milo drink powder, added with frosted icing as the confectionery center filling.' },
-    { id: 7, name: 'Mixed Berries Delight', code: 'M007', price: 7.50, quantity: 1, imagePath: 'pics1/7.jpg', description: 'With the coloring of its sandwich cookies naturally derived from berries, Mixed Berries Delight is a sure hit with people who love berries.' },
-    { id: 8, name: 'Red Velvet with Cherries', code: 'M008', price: 8.00, quantity: 1, imagePath: 'pics1/8.jpg', description: 'With its luxuriously red meringue cookies, the Red Velvet is a popular flavour choice for those looking to gift dear ones.' },
-    { id: 9, name: 'Tropical Fruits Granduer', code: 'M009', price: 7.50, quantity: 1, imagePath: 'pics1/9.jpg', description: 'An exotic shade of yellow gold gives this flavour a mysterious aura of the untried and untasted. If you love tropical climate and tropical fruits, do give it a go!' },
-    { id: 10, name: 'Magnificient Mango Mania', code: 'M010', price: 7.00, quantity: 1, imagePath: 'pics1/10.jpg', description: 'Definitely for the mango lovers, there is so much fresh mango pulp inside the ganache, you will hardly notice the cream in its filling!' },
-    { id: 11, name: 'Salted Caramel with Coffee', code: 'M011', price: 7.50, quantity: 1, imagePath: 'pics1/11.jpg', description: 'Giving salted caramel an extra burst of flavour, coffee is added in, to the joy of those who love coffee as well!' },
-    { id: 12, name: 'Black Forest', code: 'M012', price: 8.00, quantity: 1, imagePath: 'pics1/12.jpg', description: 'The royal mixture of dark chocolate, cherries and berries that make up this classic flavour will give you a run for your money!' },
-    { id: 13, name: 'Box of 12s (Assorted)', code: 'M013', price: 79.00, quantity: 1, imagePath: 'pics1/13.jpg', description: 'Flavor selection: One of each unique flavor listed (12 unique flavors in total)' },
-    { id: 14, name: 'Box of 24s (Assorted)', code: 'M014', price: 150.00, quantity: 1, imagePath: 'pics1/14.jpg', description: 'Flavor selection: Two of each unique flavor listed (12 unique flavors in total)' },
-    { id: 15, name: 'Box of 30s (Assorted)', code: 'M015', price: 169.00, quantity: 1, imagePath: 'pics1/15.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', choice5: 'Choice 5', description: 'Flavor selection: Choose up to 5 different flavors (12 unique flavors in total)' }
+
 ];
 
 
@@ -78,36 +65,52 @@ function selectOption(selected) {
 
 // function to call arrange prices by ascending order
 function lowToHigh() {
-    sortPriceAscending(productData);
+    sortPriceAscending();
 }
 
-function sortPriceAscending(productData) {
-    // console.log('Sorting by price in ascending order...');
-    productData.sort(function (a, b) {
-        return a.price - b.price;
-    });
-    // console.log('Sorted productData:', productData);
+function sortPriceAscending() {
+    productData.length = 0;
+    window.sharedData.macaronsData.sort((a, b) => a.price - b.price);
+    for (const item of window.sharedData.macaronsData) {
+        productData.push(item);
+    }
+    console.log(productData);
     renderMacarons(productData);
 }
 
 
 // function to call arrange prices by ascending order
 function highToLow() {
-    sortPriceDescending(productData);
+    sortPriceDescending();
 }
 
-function sortPriceDescending(productData) {
-    console.log('Sorting by price in descending order...');
-    productData.sort(function (a, b) {
-        return b.price - a.price;
-    });
-    console.log('Sorted productData:', productData);
+function sortPriceDescending() {
+    productData.length = 0;
+    window.sharedData.macaronsData.sort((a, b) => b.price - a.price);
+    for (const item of window.sharedData.macaronsData) {
+        productData.push(item);
+    }
+    // console.log(productData);
     renderMacarons(productData);
 }
 
 
+// function to add product details into productData[] from global.js
+function loadFromShared() {
+    for (let i = 0; i < window.sharedData.macaronsData.length; i++) {
+        productData.push(window.sharedData.macaronsData[i]);
+    }
 
-renderMacarons(productData);
+    // check
+    console.log(productData);
+}
+
+
+//call responsive function when initial loading
+window.addEventListener('load', function () {
+    loadFromShared();
+    renderMacarons(productData);
+});
 
 
 function renderMacarons(productData) {
@@ -117,8 +120,8 @@ function renderMacarons(productData) {
 
     macaronsdisplay.style.display = 'grid';
 
-    //responsive display 
-    window.addEventListener('resize', function () {
+    //function for responsive display 
+    function responsiveDisplay() {
         if (window.innerWidth <= 767) {
             macaronsdisplay.style.gridTemplateColumns = 'repeat(1, 1fr)';
         } else if (window.innerWidth > 767 && window.innerWidth <= 991) {
@@ -128,7 +131,11 @@ function renderMacarons(productData) {
         } else {
             macaronsdisplay.style.gridTemplateColumns = 'repeat(4, 1fr)';
         }
-    });
+    };
+
+    responsiveDisplay();
+
+    window.addEventListener('resize', responsiveDisplay);
 
 
     for (let u = 0; u < productData.length; u++) {
@@ -315,7 +322,7 @@ function renderMacarons(productData) {
         a1.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToFav(u + 1);
+            addItemToFav(u);
             console.log('testing0');
 
         });
@@ -333,7 +340,7 @@ function renderMacarons(productData) {
         a3.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToBag(u + 1);
+            addItemToBag(u);
             console.log('testing2');
 
         });
@@ -344,9 +351,6 @@ function renderMacarons(productData) {
             let popuppanel = document.querySelector('.popuppanel');
             popuppanel.hidden = false;
             popuppanel.style.display = "block";
-
-            var itemId = index + 1;
-
             let searchlist = '';
             let infoDiv =
                 `
@@ -358,8 +362,8 @@ function renderMacarons(productData) {
                     <p style="color: goldenrod; font-weight: bold;">$${productData[index].price.toFixed(2)}</p>
                     <p style="color: white;">${productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
-                    <a href="#" id="fav${itemId}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${itemId});">ADD TO FAVORITES</a>
-                    <button id="bag${itemId}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${itemId});">ADD TO BAG</button>
+                    <a href="#" id="fav${productData[index].id}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
+                    <button id="bag${productData[index].id}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
                 </div>
             </div>
             `;
@@ -441,14 +445,13 @@ function renderMacarons(productData) {
 
 //code for adding product (qty:1) from popup to FAV
 function addItemToFav(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToFav";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("favItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("favItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('favQuantity', newCount);
@@ -462,14 +465,13 @@ function addItemToFav(pdindex) {
 
 //code for adding product (qty:1) from popup to BAG
 function addItemToBag(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToBag";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("bagItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("bagItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('bagQuantity', newCount);
@@ -483,7 +485,7 @@ function addItemToBag(pdindex) {
 
 // Access data from local storage
 var localStorageData = getAllLocalStorageData();
-console.log(localStorageData);
+// console.log(localStorageData);
 
 // Function to get all data from local storage
 function getAllLocalStorageData() {
@@ -509,8 +511,8 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';

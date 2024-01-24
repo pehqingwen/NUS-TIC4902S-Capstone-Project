@@ -394,7 +394,7 @@ $(document).ready(function () {
                     let bagQty = parseInt(localStorage.getItem(key)) || 0;
                     bagQty = Math.max(0, bagQty - 1);
                     localStorage.setItem('bagQuantity', JSON.stringify(bagQty));
-                } else if (key && key === 'item' + bagItems[index].id + 'AddedToCart') {
+                } else if (key && key === 'item' + bagItems[index].id + 'AddedToBag') {
                     localStorage.removeItem(key);
                 }
 
@@ -751,17 +751,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// var buttonForCheckout = document.getElementById('buttonCheckout');
-// buttonForCheckout.addEventListener('click', function () {
-//     // navigate to the new page
-//     window.location.href = 'http://localhost:8080/payment.html';
-// });
+var buttonForCheckout = document.getElementById('buttonCheckout');
+buttonForCheckout.addEventListener('click', function () {
+    // navigate to the new page (should be done via form submission type="submit" && connect to parsing&storing in db)
+    // window.location.href = 'http://localhost:8080/payment.html';
+
+    location.reload();
+
+});
 
 
 // // save order details and create file for user to download (invoice)
 
 
-// search bar 
+// search bar
 // Add an event listener to the form to handle form submission
 document.getElementById('searchForm').addEventListener('submit', function (event) {
     // Prevent the default form submission
@@ -772,9 +775,10 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';
 });
+

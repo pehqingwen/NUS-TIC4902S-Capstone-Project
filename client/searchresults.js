@@ -5,89 +5,6 @@ $(function () {
     });
 });
 
-//loop: jQuery to allow dropdown select of 1-100
-$(function () {
-    for (let i = 46; i <= 57; i++) {
-        var $select = $("#1-100-" + i);
-        for (let j = 1; j <= 100; j++) {
-            $select.append($('<option></option>').val(j).html(j));
-        }
-    }
-});
-
-//loop for show & hide of products' info panels 
-for (let i = 46; i <= 57; i++) {
-    createShowFunction(i);
-    createHideFunction(i);
-}
-
-function createShowFunction(popupNumber) {
-    window["show" + popupNumber] = function (event) {
-        var overlay = document.getElementById("overlay");
-        overlay.hidden = false;
-        overlay.style.display = "block";
-        var popup = document.getElementById("popup" + popupNumber);
-        popup.hidden = false;
-        popup.style.display = "block";
-        event.preventDefault();
-    };
-}
-
-function createHideFunction(popupNumber) {
-    window["hide" + popupNumber] = function (event) {
-        var overlay = document.getElementById("overlay");
-        overlay.hidden = true;
-        overlay.style.display = "none";
-        var popup = document.getElementById("popup" + popupNumber);
-        popup.hidden = true;
-        popup.style.display = "none";
-        event.preventDefault();
-    };
-}
-
-//loop for adding one pdt only once 
-for (let i = 46; i <= 57; i++) {
-    createAddBagFunction(i);
-    createAddFavFunction(i);
-}
-
-let selectedQuantity = 1;  // Global variable to store the selected quantity
-
-function storeSelectedItemQuantity(value) {
-    selectedQuantity = parseInt(value);
-}
-
-function createAddBagFunction(indexNumber) {
-    window["addItemToCart" + indexNumber] = function (event) {
-        let currentItem = productData[indexNumber - 46];
-        console.log(selectedQuantity);
-        currentItem.quantity = selectedQuantity || 1;
-
-        localStorage.setItem("bagItem" + indexNumber, JSON.stringify(currentItem));
-
-        let itemKey = 'item' + indexNumber + 'AddedToCart';
-
-        // Check if the item has already been added to the cart
-        if (!localStorage.getItem(itemKey)) {
-            let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
-            let newCount = currentCount + 1;
-
-            // Set the flag to indicate the item has been added to the cart
-            localStorage.setItem(itemKey, 'true');
-            localStorage.setItem('bagQuantity', newCount);
-
-            //displays the innerText at bag.html webpage
-            let subsequentItem = JSON.parse(document.getElementById("bagItem" + indexNumber).innerText);
-            subsequentItem.quantity = parseInt(selectedQuantity);
-            localStorage.setItem("bagItem" + indexNumber, JSON.stringify(subsequentItem));
-
-            updateItemCountBag();
-        } else {
-            alert('Item already added to cart.');
-        }
-        event.preventDefault();
-    }
-}
 
 // Function to update the item count on the page
 function updateItemCountBag() {
@@ -96,36 +13,13 @@ function updateItemCountBag() {
     element.innerText = storedCount;
 }
 
-function createAddFavFunction(indexNumber) {
-    window["addItemToFav" + indexNumber] = function (event) {
-        let itemKey = 'item' + indexNumber + 'AddedToFav';
-
-        // Check if the item has already been added to fav
-        if (!localStorage.getItem(itemKey)) {
-            let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
-            let newCount = currentCount + 1;
-
-            // Set the flag to indicate the item has been added to the cart
-            localStorage.setItem(itemKey, 'true');
-            localStorage.setItem('favQuantity', newCount);
-
-            //displays the innerText at fav.html webpage
-            localStorage.setItem("favItem" + indexNumber, document.getElementById("favItem" + indexNumber).innerText)
-            updateItemCountFav();
-
-        } else {
-            alert('Item already added to favourites.');
-        }
-        event.preventDefault();
-    };
-}
-
 // Function to update the item count on the page
 function updateItemCountFav() {
     let element = document.getElementById('favQuantity');
     let storedCount = parseInt(localStorage.getItem('favQuantity')) || 0;
     element.innerText = storedCount;
 }
+
 
 window.onload = function () {
     updateItemCountBag();
@@ -139,45 +33,21 @@ function resetItemCount() {
 }
 
 
-var nameArray = ["Orange Citrus Burst", "Pink Strawberry Swirl", "Zesty Lemon Thrill", "Dark Chocolate Delight", "Chewy Candy Blues", "Milo", "Mixed Berries Delight", "Red Velvet with Cherries", "Tropical Fruits Granduer", "Magnificient Mango Mania", "Salted Caramel with Coffee", "Black Forest", "Box of 12s (Assorted)", "Box of 24s (Assorted)", "Box of 30s (Assorted)", "Tropical Passionfruit", "Citrus Orange", "Zesty Lemon", "Dark Chocolate", "Rum & Cherries", "White Tea & Berries", "Japanese Sakura", "Black Tea with Mango", "Coffee & Cookies", "White Chocolate with Rose", "Salted Caramel with Coffee", "Black Forest", "Box Set of 5s", "Box Set of 12s", "Box Set of 25s", "Salted Caramel Cake", "Neapolitan Layered Cake", "Zesty Lemon Cake", "Dark Chocolate Indulgence", "Sakura Tea Vanilla Cake", "Red Velvet & Cherries Cake", "Matcha Mont Blanc Tart", "Lemony Meringue Tart", "Mango Passionfruit Tart", "Blackberry Cheesecake Tart", "Pistachio Strawberry Tart", "Strawberry Cheesecake", "Giftbox of 4s", "Giftbox of 6s", "Giftbox of 8s", "Espresso", "Latte", "Americano", "Cappuccino", "Macchiato", "Mocha", "Flat White", "Iced Cold Brew", "Iced Frappe", "Affogato", "Iced Latte", "Iced Mocha"]
-
-let indexArray = [];
-
-const keyword = document.getElementById('search').value.toLowerCase();
-
-for (let i = 0; i < nameArray.length; i++) {
-    if (nameArray[i].toLowerCase().includes(keyword)) {
-        indexArray.push(i);
-    }
-}
-
 var resultsContainer = $('#searchResultsContainer');
-resultsContainer.empty();
-
 
 function search() {
     const keyword = document.getElementById('search').value.toLowerCase();
-    const searchResults = [];
-
     for (let i = 0; i < nameArray.length; i++) {
         if (nameArray[i].toLowerCase().includes(keyword)) {
             indexArray.push(i);
         }
     }
-
 }
 
-//use jQuery to handle the form submission event 
-$('#searchForm').submit(function (event) {
-    //prevent default form submission 
-    event.preventDefault();
 
-    //call search function 
-    search();
-});
+let productData = [];
 
 
-//NOT the same functionality here (uses array_index here, not array)
 // filter/sorting function 
 
 function selectOption(selected) {
@@ -197,71 +67,40 @@ function selectOption(selected) {
 
 // function to call arrange prices by ascending order
 function lowToHigh() {
-    sortPriceAscending(productData);
+    sortPriceAscending();
 }
 
-function sortPriceAscending(productData) {
-    // console.log('Sorting by price in ascending order...');
-    productData.sort(function (a, b) {
-        return a.price - b.price;
-    });
-    // console.log('Sorted productData:', productData);
-    renderBonbons(productData);
+function sortPriceAscending() {
+    let tempArray = [];
+    for (let i = 0; i < productData.length; i++) {
+        tempArray.push(productData[i]);
+    }
+    productData.length = 0;
+    tempArray.sort((a, b) => a.price - b.price);
+    for (let j = 0; j < tempArray.length; j++) {
+        productData.push(tempArray[j]);
+    }
+    renderSearchResults(productData);
 }
 
 
 // function to call arrange prices by ascending order
 function highToLow() {
-    sortPriceDescending(productData);
+    sortPriceDescending();
 }
 
-function sortPriceDescending(productData) {
-    console.log('Sorting by price in descending order...');
-    productData.sort(function (a, b) {
-        return b.price - a.price;
-    });
-    console.log('Sorted productData:', productData);
-    renderBonbons(productData);
+function sortPriceDescending() {
+    let tempArray = [];
+    for (let i = 0; i < productData.length; i++) {
+        tempArray.push(productData[i]);
+    }
+    productData.length = 0;
+    tempArray.sort((a, b) => b.price - a.price);
+    for (let j = 0; j < tempArray.length; j++) {
+        productData.push(tempArray[j]);
+    }
+    renderSearchResults(productData);
 }
-
-
-
-// function renderSearchResults(j) {
-//     //use productData[j].name etc. 
-//     resultsContainer.innerHTML = '';
-//     var index = parseInt(j);
-//     //create divs to append to resultsContainer 
-//     var infoDiv = document.createElement('div');
-
-//     infoDiv.innerHTML = `
-//     <div style="padding: 15px 0 0 0;">
-//     <div class="col-lg-3 col-md-6">
-//     <div class="grid">
-//     <div class="grid-container">
-//     <div style="width: 100%; height: 100%; position: relative; text-align: center; background-size: contain;">
-//         <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
-//             <img src="${productData[index].imagePath}" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; cursor: pointer; transition: .5s ease-in-out;">
-//         </div>
-
-//         <div class="text" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 20px; z-index: 4; -webkit-backdrop-filter: grayscale(75%); backdrop-filter: grayscale(75%);  object-fit: cover; position: absolute;">
-//         </div>
-//     </div>
-//     </div>
-//     </div>
-//     </div>
-//     </div>
-// `;
-
-//     resultsContainer.appendChild(infoDiv);
-// }
-
-
-//some notes - innerHTML: /n/n ; innerText: /n ; textContent: no space 
-
-
-var nameArray = ["Orange Citrus Burst", "Pink Strawberry Swirl", "Zesty Lemon Thrill", "Dark Chocolate Delight", "Chewy Candy Blues", "Milo", "Mixed Berries Delight", "Red Velvet with Cherries", "Tropical Fruits Granduer", "Magnificient Mango Mania", "Salted Caramel with Coffee", "Black Forest", "Box of 12s (Assorted)", "Box of 24s (Assorted)", "Box of 30s (Assorted)", "Tropical Passionfruit", "Citrus Orange", "Zesty Lemon", "Dark Chocolate", "Rum & Cherries", "White Tea & Berries", "Japanese Sakura", "Black Tea with Mango", "Coffee & Cookies", "White Chocolate with Rose", "Salted Caramel with Coffee", "Black Forest", "Box Set of 5s", "Box Set of 12s", "Box Set of 25s", "Salted Caramel Cake", "Neapolitan Layered Cake", "Zesty Lemon Cake", "Dark Chocolate Indulgence", "Sakura Tea Vanilla Cake", "Red Velvet & Cherries Cake", "Matcha Mont Blanc Tart", "Lemony Meringue Tart", "Mango Passionfruit Tart", "Blackberry Cheesecake Tart", "Pistachio Strawberry Tart", "Strawberry Cheesecake", "Giftbox of 4s", "Giftbox of 6s", "Giftbox of 8s", "Espresso", "Latte", "Americano", "Cappuccino", "Macchiato", "Mocha", "Flat White", "Iced Cold Brew", "Iced Frappe", "Affogato", "Iced Latte", "Iced Mocha"]
-
-var resultsContainer = $('#searchResultsContainer');
 
 
 // for searchbar of itself 
@@ -270,12 +109,12 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     event.preventDefault();
 
     // Get the search keyword
-    var keyword = document.getElementById('search').value.trim().toLowerCase();
-    var originalkeyword = document.getElementById('search').value.trim();
+    var keyword = document.getElementById('search').value.trim().toLowerCase() || '';
+    var originalkeyword = document.getElementById('search').value.trim() || '';
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     search();
 });
@@ -291,30 +130,32 @@ $(document).ready(function () {
 
 function search() {
 
+    //empty the array
+    productData.length = 0;
+
     //fetch keyword from localstorage
-    var keyword = localStorage.getItem('searchKeyword');
-    var originalkeyword = localStorage.getItem('originalsearchKeyword');
+    var keyword = JSON.parse(localStorage.getItem('searchKeyword'));
+    var originalkeyword = JSON.parse(localStorage.getItem('originalsearchKeyword'));
     var updateCount = document.getElementById('count');
 
-    document.getElementById('keyword').setAttribute("value", originalkeyword);
-    document.getElementById('keyword').innerText = "'" + originalkeyword + "'";
+    var displayKeyword = document.getElementById('keyword');
+    displayKeyword.textContent = "'" + originalkeyword + "'" || '';
 
-    let indexArray = [];
     let count = 0;
 
-    for (let i = 0; i < nameArray.length; i++) {
-        if (nameArray[i].toLowerCase().includes(keyword)) {
-            indexArray.push(i);
+    for (let i = 0; i < window.sharedData.productData.length; i++) {
+        if (window.sharedData.productData[i].name.toLowerCase().includes(keyword)) {
+            productData.push(window.sharedData.productData[i]);
             count++;
         } else if (window.sharedData.productData[i].description.includes(keyword)) {
-            indexArray.push(i);
+            productData.push(window.sharedData.productData[i]);
             count++;
         }
     }
 
-    if (indexArray.length === 0 && keyword === '') {
+    if (productData.length === 0 && keyword === '') {
         for (let i = 0; i < window.sharedData.productData.length; i++) {
-            indexArray.push(i);
+            productData.push(window.sharedData.productData[i]);
             count++;
         }
     }
@@ -322,24 +163,26 @@ function search() {
     updateCount.innerText = count;
 
     // Call the render function here
-    renderSearchResults(indexArray);
+    renderSearchResults(productData);
 
 }
 
-function renderSearchResults(indexArray) {
+function renderSearchResults(productData) {
     resultsContainer.empty();
 
-    for (let u = 0; u < indexArray.length; u++) {
+    for (let u = 0; u < productData.length; u++) {
 
-        var index = parseInt(indexArray[u]);
         var infoDiv = document.createElement('div');
 
         //include ${index} to call function for show()/hide()
         infoDiv.innerHTML = `
         <div style="text-align: center;" class="set">
-    <div id="${index}" class="container" style="position: relative; display: inline-block; background-color: transparent;"><div id="overlay${index}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); white-space: nowrap;"></div><a href="#"><img src="${window.sharedData.productData[index].imagePath}" width="350" height="230"></a></div>
-    <div style="color: white;">${window.sharedData.productData[index].name}</div>
-    <div style="color: white;">$${window.sharedData.productData[index].price.toFixed(2)}</div>
+    <div id="${u}" class="container" style="position: relative; display: inline-block; background-color: transparent;">
+        <div id="overlay${u}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); white-space: nowrap;"></div>
+        <img src="${productData[u].imagePath}" width="350" height="230">
+    </div>
+    <div style="color: white;">${productData[u].name}</div>
+    <div style="color: white;">$${productData[u].price.toFixed(2)}</div>
         <br>
         </div>
     `;
@@ -424,7 +267,7 @@ function renderSearchResults(indexArray) {
         ];
         var svgPath3 = "M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z";
 
-        var parent1 = document.getElementById(`overlay${index}`);
+        var parent1 = document.getElementById(`overlay${u}`);
         var parentExtra = document.createElement('div');
         // Copy computed styles from parent1 to parentExtra
         var computedStyles = window.getComputedStyle(parent1);
@@ -510,9 +353,7 @@ function renderSearchResults(indexArray) {
 
         a1.addEventListener('click', function (event) {
             event.preventDefault();
-            //the function here for popuppanel
-            renderPopupPanel(indexArray[u]);
-            //createShowFunction(indexArray[u] + 1);
+            addItemToFav(u);
             console.log('testing0');
 
         });
@@ -521,8 +362,7 @@ function renderSearchResults(indexArray) {
         a2.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            renderPopupPanel(indexArray[u]);
-            //createShowFunction(indexArray[u] + 1);
+            renderPopupPanel(u);
             console.log('testing1');
 
         });
@@ -530,9 +370,7 @@ function renderSearchResults(indexArray) {
 
         a3.addEventListener('click', function (event) {
             event.preventDefault();
-            //the function here for popuppanel
-            renderPopupPanel(indexArray[u]);
-            //createShowFunction(indexArray[u] + 1);
+            addItemToBag(u);
             console.log('testing2');
 
         });
@@ -544,20 +382,19 @@ function renderSearchResults(indexArray) {
             let popuppanel = document.querySelector('.popuppanel');
             popuppanel.hidden = false;
             popuppanel.style.display = "block";
-
             let searchlist = '';
             let infoDiv =
                 `
             <div id="background">
                 <div id="inner">
                     <a href="#" id="close">X</a>
-                    <img src="${window.sharedData.productData[index].imagePath}" style="display: flex; border-radius: 50%; align-items: center; width: 90px; height: 90px;">
-                    <p style="font-weight: bold; color: orange;">${window.sharedData.productData[index].name} (${window.sharedData.productData[index].code})</p>
-                    <p style="color: goldenrod; font-weight: bold;">$${window.sharedData.productData[index].price.toFixed(2)}</p>
-                    <p style="color: white;">${window.sharedData.productData[index].description}</p>
+                    <img src="${productData[index].imagePath}" style="display: flex; border-radius: 50%; align-items: center; width: 90px; height: 90px;">
+                    <p style="font-weight: bold; color: orange;">${productData[index].name} (${productData[index].code})</p>
+                    <p style="color: goldenrod; font-weight: bold;">$${productData[index].price.toFixed(2)}</p>
+                    <p style="color: white;">${productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
-                    <a href="#" id="fav${index}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
-                    <button id="bag${index}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
+                    <a href="#" id="fav${productData[index].id}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
+                    <button id="bag${productData[index].id}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
                 </div>
             </div>
             `;
@@ -588,17 +425,17 @@ function renderSearchResults(indexArray) {
 
                         a1.addEventListener('click', function (event) {
                             event.preventDefault();
-                            renderSearchResults(indexArray);
+                            renderSearchResults(productData);
                         });
 
                         a2.addEventListener('click', function (event) {
                             event.preventDefault();
-                            renderSearchResults(indexArray);
+                            renderSearchResults(productData);
                         });
 
                         a3.addEventListener('click', function (event) {
                             event.preventDefault();
-                            renderSearchResults(indexArray);
+                            renderSearchResults(productData);
                         });
 
                     }
@@ -627,9 +464,9 @@ function renderSearchResults(indexArray) {
         }
 
         // Add event listeners using the encapsulated index
-        var container = document.getElementById(`${index}`);
-        container.addEventListener('mouseover', createMouseOverHandler(index));
-        container.addEventListener('mouseout', createMouseOutHandler(index));
+        var container = document.getElementById(`${u}`);
+        container.addEventListener('mouseover', createMouseOverHandler(u));
+        container.addEventListener('mouseout', createMouseOutHandler(u));
 
 
     }
@@ -639,14 +476,13 @@ function renderSearchResults(indexArray) {
 
 //code for adding product (qty:1) from popup to FAV
 function addItemToFav(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage 
-        let listNumber = pdindex + 1;
+        let listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToFav";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("favItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex]));
+            localStorage.setItem("favItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('favQuantity', newCount);
@@ -660,14 +496,13 @@ function addItemToFav(pdindex) {
 
 //code for adding product (qty:1) from popup to BAG
 function addItemToBag(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage 
-        let listNumber = pdindex + 1;
+        let listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToBag";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("bagItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex]));
+            localStorage.setItem("bagItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('bagQuantity', newCount);

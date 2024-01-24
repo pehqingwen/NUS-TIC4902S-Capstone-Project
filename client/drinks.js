@@ -41,18 +41,7 @@ function resetItemCount() {
 
 
 const productData = [
-    { id: 46, name: 'Espresso', code: 'D001', price: 4.00, quantity: 1, imagePath: 'pics4/46.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 47, name: 'Latte', code: 'D002', price: 6.50, quantity: 1, imagePath: 'pics4/47.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 48, name: 'Americano', code: 'D003', price: 6.00, quantity: 1, imagePath: 'pics4/48.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 49, name: 'Cappuccino', code: 'D004', price: 7.50, quantity: 1, imagePath: 'pics4/49.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 50, name: 'Macchiato', code: 'D005', price: 5.50, quantity: 1, imagePath: 'pics4/50.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 51, name: 'Mocha', code: 'D006', price: 9.00, quantity: 1, imagePath: 'pics4/51.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 52, name: 'Flat White', code: 'D007', price: 8.00, quantity: 1, imagePath: 'pics4/52.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 53, name: 'Iced Cold Brew', code: 'D008', price: 10.00, quantity: 1, imagePath: 'pics4/53.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 54, name: 'Iced Frappe', code: 'D009', price: 10.50, quantity: 1, imagePath: 'pics4/54.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 55, name: 'Affogato', code: 'D010', price: 11.00, quantity: 1, imagePath: 'pics4/55.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 56, name: 'Iced Latte', code: 'D011', price: 9.50, quantity: 1, imagePath: 'pics4/56.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
-    { id: 57, name: 'Iced Mocha', code: 'D012', price: 10.00, quantity: 1, imagePath: 'pics4/57.jpg', description: 'Beverage brewed from the roasted and ground seeds of the tropical evergreen coffee plant. Packed in glass bottles for delivery.' },
+
 ];
 
 
@@ -75,36 +64,52 @@ function selectOption(selected) {
 
 // function to call arrange prices by ascending order
 function lowToHigh() {
-    sortPriceAscending(productData);
+    sortPriceAscending();
 }
 
-function sortPriceAscending(productData) {
-    // console.log('Sorting by price in ascending order...');
-    productData.sort(function (a, b) {
-        return a.price - b.price;
-    });
-    // console.log('Sorted productData:', productData);
+function sortPriceAscending() {
+    productData.length = 0;
+    window.sharedData.drinksData.sort((a, b) => a.price - b.price);
+    for (const item of window.sharedData.drinksData) {
+        productData.push(item);
+    }
+    console.log(productData);
     renderDrinks(productData);
 }
 
 
 // function to call arrange prices by ascending order
 function highToLow() {
-    sortPriceDescending(productData);
+    sortPriceDescending();
 }
 
-function sortPriceDescending(productData) {
-    console.log('Sorting by price in descending order...');
-    productData.sort(function (a, b) {
-        return b.price - a.price;
-    });
-    console.log('Sorted productData:', productData);
+function sortPriceDescending() {
+    productData.length = 0;
+    window.sharedData.drinksData.sort((a, b) => b.price - a.price);
+    for (const item of window.sharedData.drinksData) {
+        productData.push(item);
+    }
+    // console.log(productData);
     renderDrinks(productData);
 }
 
 
+// function to add product details into productData[] from global.js
+function loadFromShared() {
+    for (let i = 0; i < window.sharedData.drinksData.length; i++) {
+        productData.push(window.sharedData.drinksData[i]);
+    }
 
-renderDrinks(productData);
+    // check
+    console.log(productData);
+}
+
+
+//call responsive function when initial loading
+window.addEventListener('load', function () {
+    loadFromShared();
+    renderDrinks(productData);
+});
 
 
 function renderDrinks(productData) {
@@ -114,8 +119,8 @@ function renderDrinks(productData) {
 
     drinksdisplay.style.display = 'grid';
 
-    //responsive display 
-    window.addEventListener('resize', function () {
+    //function for responsive display 
+    function responsiveDisplay() {
         if (window.innerWidth <= 767) {
             drinksdisplay.style.gridTemplateColumns = 'repeat(1, 1fr)';
         } else if (window.innerWidth > 767 && window.innerWidth <= 991) {
@@ -125,7 +130,11 @@ function renderDrinks(productData) {
         } else {
             drinksdisplay.style.gridTemplateColumns = 'repeat(4, 1fr)';
         }
-    });
+    };
+
+    responsiveDisplay();
+
+    window.addEventListener('resize', responsiveDisplay);
 
 
     for (let u = 0; u < productData.length; u++) {
@@ -312,7 +321,7 @@ function renderDrinks(productData) {
         a1.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToFav(u + 46);
+            addItemToFav(u);
             console.log('testing0');
 
         });
@@ -330,7 +339,7 @@ function renderDrinks(productData) {
         a3.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToBag(u + 46);
+            addItemToBag(u);
             console.log('testing2');
 
         });
@@ -341,9 +350,6 @@ function renderDrinks(productData) {
             let popuppanel = document.querySelector('.popuppanel');
             popuppanel.hidden = false;
             popuppanel.style.display = "block";
-
-            var itemId = index + 46;
-
             let searchlist = '';
             let infoDiv =
                 `
@@ -355,8 +361,8 @@ function renderDrinks(productData) {
                     <p style="color: goldenrod; font-weight: bold;">$${productData[index].price.toFixed(2)}</p>
                     <p style="color: white;">${productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
-                    <a href="#" id="fav${itemId}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${itemId});">ADD TO FAVORITES</a>
-                    <button id="bag${itemId}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${itemId});">ADD TO BAG</button>
+                    <a href="#" id="fav${productData[index].id}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
+                    <button id="bag${productData[index].id}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
                 </div>
             </div>
             `;
@@ -437,15 +443,14 @@ function renderDrinks(productData) {
 
 
 //code for adding product (qty:1) from popup to FAV
-function addItemToFav(pdindex) { //pdindex is 46-57 for drinks 
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+function addItemToFav(pdindex) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToFav";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("favItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("favItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('favQuantity', newCount);
@@ -459,14 +464,13 @@ function addItemToFav(pdindex) { //pdindex is 46-57 for drinks
 
 //code for adding product (qty:1) from popup to BAG
 function addItemToBag(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToBag";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("bagItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("bagItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('bagQuantity', newCount);
@@ -480,7 +484,7 @@ function addItemToBag(pdindex) {
 
 // Access data from local storage
 var localStorageData = getAllLocalStorageData();
-console.log(localStorageData);
+// console.log(localStorageData);
 
 // Function to get all data from local storage
 function getAllLocalStorageData() {
@@ -506,8 +510,8 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';

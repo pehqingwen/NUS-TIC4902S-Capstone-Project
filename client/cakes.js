@@ -41,21 +41,7 @@ function resetItemCount() {
 
 
 const productData = [
-    { id: 31, name: 'Salted Caramel Cake', code: 'C001', price: 9.50, quantity: 1, imagePath: 'pics3/31.jpg', description: 'A slice of cake full of salted caramel goodness, for you or your loved one!' },
-    { id: 32, name: 'Neapolitan Layered Cake', code: 'C002', price: 72.00, quantity: 1, imagePath: 'pics3/32.jpg', description: 'A tri-layered cake consisting of chocolate, strawberry, and vanilla. Enjoy the mixture of different flavours in one cake!' },
-    { id: 33, name: 'Zesty Lemon Cake', code: 'C003', price: 10.50, quantity: 1, imagePath: 'pics3/33.jpg', description: 'Finished with a dollop of fresh lemon marmalade, the baked lemon crust of the cake crumble under the spoon to reveal a filling of layered lemon delight!' },
-    { id: 34, name: 'Dark Chocolate Indulgence', code: 'C004', price: 9.50, quantity: 1, imagePath: 'pics3/34.jpg', description: 'Made with care with 65% dark chocolate, and dark chocolate fudge, chocolate lovers will love this.' },
-    { id: 35, name: 'Sakura Tea Vanilla Cake', code: 'C005', price: 10.00, quantity: 1, imagePath: 'pics3/35.jpg', description: 'Infused with sakura flavored tea, the vanilla chiffon cake is also topped and layered with sakura essence buttercream.' },
-    { id: 36, name: 'Red Velvet & Cherries Cake', code: 'C006', price: 100.50, quantity: 1, imagePath: 'pics3/36.jpg', description: 'The velvety red cake with vanilla cream and cherries gives an enticing impression.' },
-    { id: 37, name: 'Matcha Mont Blanc Tart', code: 'C007', price: 12.50, quantity: 1, imagePath: 'pics3/37.jpg', description: 'Baked fresh daily with matcha powder imported from Japan, the mont blanc is worth trying!' },
-    { id: 38, name: 'Lemony Meringue Tart', code: 'C008', price: 12.00, quantity: 1, imagePath: 'pics3/38.jpg', description: 'The citrusy taste of the lemon used in the meringue enhances the sweetness and fluffiness of it.' },
-    { id: 39, name: 'Mango Passionfruit Tart', code: 'C009', price: 10.50, quantity: 1, imagePath: 'pics3/39.jpg', description: 'Mango and passionfruit are the best of tropical fruits combination there can be for just a tart.' },
-    { id: 40, name: 'Blackberry Cheesecake Tart', code: 'C010', price: 13.00, quantity: 1, imagePath: 'pics3/40.jpg', description: 'If you like cheese, the gentle subtle taste of the blackberries will bring out the flavours of the cheesecake tart.' },
-    { id: 41, name: 'Pistachio Strawberry Tart', code: 'C011', price: 9.50, quantity: 1, imagePath: 'pics3/41.jpg', description: 'The pistachios and strawberries go so well together, you won\'t believe it!' },
-    { id: 42, name: 'Strawberry Cheesecake', code: 'C012', price: 95.00, quantity: 1, imagePath: 'pics3/42.jpg', description: 'Topped with fresh strawberries atop strawberry sauce and gelatin, the cheesecake and crispy base crust combination shall not disappoint anyone.' },
-    { id: 43, name: 'Giftbox of 4s', code: 'C013', price: 36.00, quantity: 1, imagePath: 'pics3/43.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', description: 'Flavor selection: Choose up to 4 different flavors (9 unique choices in total)' },
-    { id: 44, name: 'Giftbox of 6s', code: 'C014', price: 50.00, quantity: 1, imagePath: 'pics3/44.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', choice5: 'Choice 5', choice6: 'Choice 6', description: 'Flavor selection: Choose up to 6 different flavors (9 unique choices in total)' },
-    { id: 45, name: 'Giftbox of 8s', code: 'C015', price: 63.00, quantity: 1, imagePath: 'pics3/45.jpg', choice1: 'Choice 1', choice2: 'Choice 2', choice3: 'Choice 3', choice4: 'Choice 4', choice5: 'Choice 5', choice6: 'Choice 6', choice7: 'Choice 7', choice8: 'Choice 8', description: 'Flavor selection: Choose up to 8 different flavors (9 unique choices in total)' }
+
 ];
 
 
@@ -78,36 +64,53 @@ function selectOption(selected) {
 
 // function to call arrange prices by ascending order
 function lowToHigh() {
-    sortPriceAscending(productData);
+    sortPriceAscending();
 }
 
-function sortPriceAscending(productData) {
-    // console.log('Sorting by price in ascending order...');
-    productData.sort(function (a, b) {
-        return a.price - b.price;
-    });
-    // console.log('Sorted productData:', productData);
+function sortPriceAscending() {
+    productData.length = 0;
+    window.sharedData.cakesData.sort((a, b) => a.price - b.price);
+    for (const item of window.sharedData.cakesData) {
+        productData.push(item);
+    }
+    console.log(productData);
     renderCakes(productData);
 }
 
 
 // function to call arrange prices by ascending order
 function highToLow() {
-    sortPriceDescending(productData);
+    sortPriceDescending();
 }
 
-function sortPriceDescending(productData) {
-    console.log('Sorting by price in descending order...');
-    productData.sort(function (a, b) {
-        return b.price - a.price;
-    });
-    console.log('Sorted productData:', productData);
+function sortPriceDescending() {
+    productData.length = 0;
+    window.sharedData.cakesData.sort((a, b) => b.price - a.price);
+    for (const item of window.sharedData.cakesData) {
+        productData.push(item);
+    }
+    // console.log(productData);
     renderCakes(productData);
 }
 
 
+// function to add product details into productData[] from global.js
+function loadFromShared() {
+    for (let i = 0; i < window.sharedData.cakesData.length; i++) {
+        productData.push(window.sharedData.cakesData[i]);
+    }
 
-renderCakes(productData);
+    // check
+    console.log(productData);
+}
+
+
+//call responsive function when initial loading
+window.addEventListener('load', function () {
+    loadFromShared();
+    renderCakes(productData);
+});
+
 
 
 function renderCakes(productData) {
@@ -117,8 +120,8 @@ function renderCakes(productData) {
 
     cakesdisplay.style.display = 'grid';
 
-    //responsive display 
-    window.addEventListener('resize', function () {
+    //function for responsive display 
+    function responsiveDisplay() {
         if (window.innerWidth <= 767) {
             cakesdisplay.style.gridTemplateColumns = 'repeat(1, 1fr)';
         } else if (window.innerWidth > 767 && window.innerWidth <= 991) {
@@ -128,7 +131,11 @@ function renderCakes(productData) {
         } else {
             cakesdisplay.style.gridTemplateColumns = 'repeat(4, 1fr)';
         }
-    });
+    };
+
+    responsiveDisplay();
+
+    window.addEventListener('resize', responsiveDisplay);
 
 
     for (let u = 0; u < productData.length; u++) {
@@ -315,7 +322,7 @@ function renderCakes(productData) {
         a1.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToFav(u + 31);
+            addItemToFav(u);
             console.log('testing0');
 
         });
@@ -333,7 +340,7 @@ function renderCakes(productData) {
         a3.addEventListener('click', function (event) {
             event.preventDefault();
             //the function here for popuppanel
-            addItemToBag(u + 31);
+            addItemToBag(u);
             console.log('testing2');
 
         });
@@ -344,9 +351,6 @@ function renderCakes(productData) {
             let popuppanel = document.querySelector('.popuppanel');
             popuppanel.hidden = false;
             popuppanel.style.display = "block";
-
-            var itemId = index + 31;
-
             let searchlist = '';
             let infoDiv =
                 `
@@ -358,8 +362,8 @@ function renderCakes(productData) {
                     <p style="color: goldenrod; font-weight: bold;">$${productData[index].price.toFixed(2)}</p>
                     <p style="color: white;">${productData[index].description}</p>
                     <p style="color: salmon;">Select quantity or flavors at checkout or favorites.</p>
-                    <a href="#" id="fav${itemId}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${itemId});">ADD TO FAVORITES</a>
-                    <button id="bag${itemId}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${itemId});">ADD TO BAG</button>
+                    <a href="#" id="fav${productData[index].id}" style="color: goldenrod;" onclick="event.preventDefault(); console.log('Click event fired!'); addItemToFav(${index});">ADD TO FAVORITES</a>
+                    <button id="bag${productData[index].id}" style="color: black; background-color: gold;"  onclick="event.preventDefault(); console.log('Click event fired!'); addItemToBag(${index});">ADD TO BAG</button>
                 </div>
             </div>
             `;
@@ -440,15 +444,14 @@ function renderCakes(productData) {
 
 
 //code for adding product (qty:1) from popup to FAV
-function addItemToFav(pdindex) { //pdindex is 31-45 for cakes
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+function addItemToFav(pdindex) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToFav";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("favItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("favItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('favQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('favQuantity', newCount);
@@ -462,14 +465,13 @@ function addItemToFav(pdindex) { //pdindex is 31-45 for cakes
 
 //code for adding product (qty:1) from popup to BAG
 function addItemToBag(pdindex) {
-    console.log(pdindex);
-    if (!isNaN(pdindex) && pdindex >= 0 && pdindex <= window.sharedData.productData.length) {
+    if (!isNaN(pdindex) && pdindex >= 0 && pdindex < productData.length) {
         //add to localstorage
-        let listNumber = pdindex;
+        listNumber = productData[pdindex].id;
         let itemKey = "item" + listNumber + "AddedToBag";
         if (!localStorage.getItem(itemKey)) {
             localStorage.setItem(itemKey, 'true');
-            localStorage.setItem("bagItem" + listNumber, JSON.stringify(window.sharedData.productData[pdindex - 1]));
+            localStorage.setItem("bagItem" + listNumber, JSON.stringify(productData[pdindex]));
             let currentCount = parseInt(localStorage.getItem('bagQuantity')) || 0;
             let newCount = currentCount + 1;
             localStorage.setItem('bagQuantity', newCount);
@@ -483,7 +485,7 @@ function addItemToBag(pdindex) {
 
 // Access data from local storage
 var localStorageData = getAllLocalStorageData();
-console.log(localStorageData);
+// console.log(localStorageData);
 
 // Function to get all data from local storage
 function getAllLocalStorageData() {
@@ -509,8 +511,8 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     var originalkeyword = document.getElementById('search').value.trim();
 
     // Store the keyword in localStorage
-    localStorage.setItem('searchKeyword', keyword);
-    localStorage.setItem('originalsearchKeyword', originalkeyword);
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
 
     // Redirect to searchresults.html
     window.location.href = 'searchresults.html';
