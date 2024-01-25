@@ -4,12 +4,14 @@
     "bootstrap": "^5.3.2",
     "color": "^4.2.3",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-g": "^1.0.3",
     "franc": "^6.2.0",
     "langs": "^2.0.0",
     "mongodb": "^6.3.0",
     "mysql": "^2.18.1",
+    "node-fetch": "^3.3.2",
     "react-bootstrap": "^2.9.0"
   },
   "name": "bitesoflove",
@@ -27,6 +29,5 @@
     "webapp"
   ],
   "author": "eve",
-  "license": "SEE LICENSE IN C:\\Users\\pehqi\\OneDrive\\Documents\\NUS-TIC4902S-Capstone-Project",
-  "devDependencies": {}
+  "license": "SEE LICENSE IN C:\\Users\\pehqi\\OneDrive\\Documents\\NUS-TIC4902S-Capstone-Project"
 }

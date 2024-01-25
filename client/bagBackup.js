@@ -394,7 +394,7 @@ $(document).ready(function () {
                     let bagQty = parseInt(localStorage.getItem(key)) || 0;
                     bagQty = Math.max(0, bagQty - 1);
                     localStorage.setItem('bagQuantity', JSON.stringify(bagQty));
-                } else if (key && key === 'item' + bagItems[index].id + 'AddedToCart') {
+                } else if (key && key === 'item' + bagItems[index].id + 'AddedToBag') {
                     localStorage.removeItem(key);
                 }
 
@@ -412,7 +412,6 @@ $(document).ready(function () {
 function reloadPage() {
     location.reload();
 }
-
 
 
 //to check whether the qty has been updated in bagItems[] permanently (not)
@@ -545,19 +544,6 @@ checkbox.addEventListener('change', function () {
 
 let totalQuantity = document.getElementById('totalQuantity');
 totalQuantity.textContent = bagItems.length;
-
-
-function resetItemCount(event) {
-    localStorage.clear(); // Clear all localStorage data
-    updateItemCountBag();
-    updateItemCountFav();
-    event.preventDefault();
-    reloadPage();
-}
-
-function reloadPage() {
-    location.reload();
-}
 
 
 function createAddBagFunction(indexNumber) {
@@ -712,36 +698,60 @@ document.addEventListener('DOMContentLoaded', function () {
         // Prevent the default form submission
         event.preventDefault();
 
+        // collect form data
+var formData = new FormData(checkout); 
+
+// create an XHR object 
+var xhr = new XMLHttpRequest(); 
+
+// configure it: specify the method & endpoint 
+xhr.open('POST', '/submit-form', true); 
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+
+ // Define the callback function to handle the response
+ xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+        // Request was successful
+        console.log('Request successful:', xhr.responseText);
+    } else {
+        // Request failed
+        console.error('Request failed:', xhr.status, xhr.statusText);
+    }
+};
+
+// Send the request with form data
+xhr.send(formData);
+
+
         userIdCount = userIdCount + 1;
         // Get user inputs
         // CREATE user_id Uxxxxxx column starting: U000001
         user_id = generateUserId(userIdCount);
         console.log(user_id);
-        var firstname = document.getElementById('firstname').value;
-        var lastname = document.getElementById('lastname').value;
-        var address1 = document.getElementById('address1').value;
-        var email = document.getElementById('email').value;
-        var address2 = document.getElementById('address2').value;
-        var country = document.getElementById('country').value;
-        var postalcode = document.getElementById('postalcode').value;
-        var countrycode = document.getElementById('countrycode').value;
-        var mobilenumber = document.getElementById('mobile').value;
+        var user_firstName = document.getElementById('firstname').value;
+        var user_lastName = document.getElementById('lastname').value;
+        var user_address1 = document.getElementById('address1').value;
+        var user_email = document.getElementById('email').value;
+        var user_address2 = document.getElementById('address2').value;
+        var user_country = document.getElementById('country').value;
+        var user_ZIP = document.getElementById('postalcode').value;
+        var user_countryCode = document.getElementById('countrycode').value;
+        var user_contactNumber = document.getElementById('mobile').value;
 
-        console.log('Email:', email);
-
+        console.log('Email:', user_email);
 
         // Create an object to store user data
         userData = {
             user_id: user_id,
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            address1: address1,
-            address2: address2,
-            country: country,
-            postalcode: postalcode,
-            countrycode: countrycode,
-            mobile: mobilenumber
+            user_firstName: user_firstName,
+            user_lastName: user_lastName,
+            user_email: user_email,
+            user_address1: user_address1,
+            user_address2: user_address2,
+            user_country: user_country,
+            user_ZIP: user_ZIP,
+            user_countryCode: user_countryCode,
+            user_contactNumber: user_contactNumber
         };
 
         // save to indexedDB at console -> Application -> Storage
@@ -749,7 +759,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var request = indexedDB.open('usersDatabase', 1);
         request.onupgradeneeded = function (event) {
             var db = event.target.result;
-            var objectStore = db.createObjectStore('users', { keyPath: 'email' });
+            var objectStore = db.createObjectStore('users', { keyPath: 'user_email' });
         };
 
         request.onsuccess = function (event) {
@@ -760,16 +770,35 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add or update data in the object store
             objectStore.put(userData);
         };
-
     });
 });
 
-
-// var buttonForCheckout = document.getElementById('buttonCheckout');
-// buttonForCheckout.addEventListener('click', function () {
-//     // navigate to the new page
-//     window.location.href = 'http://localhost:8080/payment.html';
-// });
+var buttonForCheckout = document.getElementById('buttonCheckout');
+buttonForCheckout.addEventListener('click', function () {
+    // navigate to the new page (should be done via form submission type="submit" && connect to parsing&storing in db)
+    // window.location.href = 'http://localhost:8080/payment.html';
+    location.reload();
+});
 
 
 // // save order details and create file for user to download (invoice)
+
+
+// search bar
+// Add an event listener to the form to handle form submission
+document.getElementById('searchForm').addEventListener('submit', function (event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Get the search keyword
+    var keyword = document.getElementById('search').value.trim().toLowerCase();
+    var originalkeyword = document.getElementById('search').value.trim();
+
+    // Store the keyword in localStorage
+    localStorage.setItem('searchKeyword', JSON.stringify(keyword));
+    localStorage.setItem('originalsearchKeyword', JSON.stringify(originalkeyword));
+
+    // Redirect to searchresults.html
+    window.location.href = 'searchresults.html';
+});
+

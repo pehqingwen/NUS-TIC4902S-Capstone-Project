@@ -692,50 +692,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Get the form element
     var checkout = document.getElementById('checkout');
-    var user_id = '';
+
     // Add submit event listener to the form
     checkout.addEventListener('submit', function (event) {
         // Prevent the default form submission
         event.preventDefault();
 
-        userIdCount = userIdCount + 1;
-        // Get user inputs
-        // CREATE user_id Uxxxxxx column starting: U000001
-        user_id = generateUserId(userIdCount);
-        console.log(user_id);
-        var firstname = document.getElementById('firstname').value;
-        var lastname = document.getElementById('lastname').value;
-        var address1 = document.getElementById('address1').value;
-        var email = document.getElementById('email').value;
-        var address2 = document.getElementById('address2').value;
-        var country = document.getElementById('country').value;
-        var postalcode = document.getElementById('postalcode').value;
-        var countrycode = document.getElementById('countrycode').value;
-        var mobilenumber = document.getElementById('mobile').value;
-
-        console.log('Email:', email);
-
-
         // Create an object to store user data
         userData = {
-            user_id: user_id,
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            address1: address1,
-            address2: address2,
-            country: country,
-            postalcode: postalcode,
-            countrycode: countrycode,
-            mobile: mobilenumber
+            // No need to manually extract form values, FormData will handle it
+            user_firstName: checkout.querySelector('#firstname').value,
+            user_lastName: checkout.querySelector('#lastname').value,
+            user_email: checkout.querySelector('#email').value,
+            user_address1: checkout.querySelector('#address1').value,
+            user_address2: checkout.querySelector('#address2').value,
+            user_country: checkout.querySelector('#country').value,
+            user_ZIP: checkout.querySelector('#postalcode').value,
+            user_countryCode: checkout.querySelector('#countrycode').value,
+            user_contactNumber: checkout.querySelector('#mobile').value,
         };
 
-        // save to indexedDB at console -> Application -> Storage
-
+        // Save to indexedDB
         var request = indexedDB.open('usersDatabase', 1);
         request.onupgradeneeded = function (event) {
             var db = event.target.result;
-            var objectStore = db.createObjectStore('users', { keyPath: 'email' });
+            var objectStore = db.createObjectStore('users', { keyPath: 'user_email' });
         };
 
         request.onsuccess = function (event) {
@@ -747,17 +728,39 @@ document.addEventListener('DOMContentLoaded', function () {
             objectStore.put(userData);
         };
 
+        // Collect form data
+        var formData = new FormData(checkout);
+
+        // Create an XHR object
+        var xhr = new XMLHttpRequest();
+
+        // Configure it: specify the method and endpoint
+        xhr.open('POST', '/submit-form', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Define the callback function to handle the response
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Request was successful
+                console.log('Request successful:', xhr.responseText);
+            } else {
+                // Request failed
+                console.error('Request failed:', xhr.status, xhr.statusText);
+            }
+        };
+
+        // Send the request with form data
+        xhr.send(formData);
     });
 });
+
 
 
 var buttonForCheckout = document.getElementById('buttonCheckout');
 buttonForCheckout.addEventListener('click', function () {
     // navigate to the new page (should be done via form submission type="submit" && connect to parsing&storing in db)
     // window.location.href = 'http://localhost:8080/payment.html';
-
     location.reload();
-
 });
 
 

@@ -1,29 +1,26 @@
 const express = require('express');
-const cors = require('cors');
+const path = require('path');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch');
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 8000;
+
+// Serve static files from the "client" folder
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(cors());
-// Middleware to parse incoming POST data
-app.use(bodyParser.urlencoded({ extended: true }));
-// static middleware to serve files from the "client" directory
-app.use(express.static('client'));
-app.use(express.static('public'));
 
-app.get('/bootstrap.css', async (req, res) => {
-    try {
-        const response = await fetch('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css');
-        const css = await response.text();
-        res.send(css);
-    } catch (error) {
-        console.error('Error fetching Bootstrap CSS:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+// // Middleware to parse incoming POST data
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// app.get('/bag.html', (req, res) => {
+//     // Sending the "bag.html" file
+//     res.sendFile(path.join(__dirname, '../client/bag.html'));
+// });
+
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -42,13 +39,10 @@ db.connect((err) => {
     }
 });
 
+
 // Route to handle form submissions
 app.post('/submit-form', (req, res) => {
     const formData = req.body;
-
-    // const userIdCount = 1;
-    // const user_id = generateUserId(userIdCount);
-    // formData.user_id = user_id;
 
     // SQL query to insert data into your MySQL table
     const sql = `INSERT INTO users (user_firstName, user_lastName, user_email, user_countryCode, user_contactNumber, user_address1, user_address2, user_country, user_ZIP) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
@@ -65,16 +59,7 @@ app.post('/submit-form', (req, res) => {
 });
 
 
-// function generateUserId(userIdCount) {
-//     var nextuserIdCount = userIdCount + 1;
-//     var paddedNumericPart = nextuserIdCount.toString().padStart(6, '0');
-//     var nextUserId = 'U' + paddedNumericPart;
-//     return nextUserId;
-// }
-
-
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
