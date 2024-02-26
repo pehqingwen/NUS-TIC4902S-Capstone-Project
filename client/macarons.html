@@ -27,11 +27,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="main.html" class="nav-link">Products</a></li>
                 <li class="nav-item"><a href="locations.html" class="nav-link">Locations</a></li>
-                <li class="nav-item"><a href="loginregister.html" class="nav-link"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                        </svg>Login|Register</a></li>
+
             </ul>
 
             <form class="form-inline my-2 my-lg-0" id="searchForm">
@@ -40,7 +36,7 @@
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-            <a href="favlogin.html">
+            <a href="favorites.html">
                 <div id="textbackground"><span id="favQuantity">0</span></div><img src="heart.svg" width="24"
                     height="24"><span id="smallscreen">Favorites</span>
             </a>
@@ -61,34 +57,6 @@
             <h5 class="card-title">BitesofLove</h5>
         </div>
     </div>
-
-
-    <!-- <header>
-        <a href="#">
-            <div class="iconFav">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
-                    class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
-                </svg>
-                <div><span id="favQuantity">0</span></div>
-            </div>
-        </a>
-        <p>Favorites</p>
-
-        <a href="bag.html">
-            <div class="iconBag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
-                    class="bi bi-bag-fill" viewBox="0 0 16 16" style="align-items:flex-end">
-                    <path
-                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                </svg>
-                <div><span id="bagQuantity">0</span></div>
-            </div>
-        </a>
-        <p>Shopping Bag</p>
-    </header> -->
-
 
     <h1>
         MACARONS
@@ -111,6 +79,7 @@
 
     <br>
 
+    <div id="dataList" hidden></div>
 
     <div id="macaronscontainer">
         <div id="macarons"></div>
@@ -137,11 +106,12 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
 
-
-
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="global.js"></script>
     <script src="macarons.js"></script>
+    <script>
+        popularity();
+    </script>
 
 </body>
 

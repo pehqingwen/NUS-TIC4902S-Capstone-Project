@@ -57,9 +57,67 @@ function selectOption(selected) {
     }
 }
 
-// function popularity() {
+function popularity() {
+    fetch('http://127.0.0.1:8000/api/ordercodes')
+        .then(res => res.text())
+        .then(data => {
+            console.log(data);
+            filterFunction(data);
+        })
+        .catch(err => console.error("Error: ", err))
+}
 
-// }
+
+function filterFunction(data) {
+    let allProductCodes = [];
+    let onlyCakes = [];
+    allProductCodes = JSON.parse(data);
+    console.log(allProductCodes);
+    console.log(typeof allProductCodes);
+    for (let i = 0; i < allProductCodes.length; i++) {
+        if (allProductCodes[i].startsWith('C')) {
+            onlyCakes.push(allProductCodes[i]);
+        }
+    }
+    console.log(onlyCakes);
+
+    const cakesSerial = ['C001', 'C002', 'C003', 'C004', 'C005', 'C006', 'C007', 'C008', 'C009', 'C010', 'C011', 'C012', 'C013', 'C014', 'C015'];
+    let frequencyCounts = [];
+    let count = 0;
+    for (let j = 0; j < cakesSerial.length; j++) {
+        for (let k = 0; k < onlyCakes.length; k++) {
+            if (cakesSerial[j] === onlyCakes[k]) {
+                count++;
+            }
+        }
+        frequencyCounts.push(count);
+        count = 0;
+    }
+
+    console.log(frequencyCounts);
+
+    let arrayOfObjects = [];
+    for (let u = 0; u < cakesSerial.length; u++) {
+        arrayOfObjects.push({
+            u: cakesSerial[u],
+            frequency: frequencyCounts[u]
+        });
+    }
+
+    console.log(arrayOfObjects);
+    arrayOfObjects.sort((a, b) => b.frequency - a.frequency);
+    console.log(arrayOfObjects);
+    productData.length = 0;
+    for (let o = 0; o < arrayOfObjects.length; o++) {
+        for (let p = 0; p < window.sharedData.cakesData.length; p++) {
+            if (arrayOfObjects[o].u === window.sharedData.cakesData[p].code) {
+                productData.push(window.sharedData.cakesData[p]);
+            }
+        }
+    }
+    console.log(productData);
+    renderCakes(productData);
+}
 
 
 // function to call arrange prices by ascending order

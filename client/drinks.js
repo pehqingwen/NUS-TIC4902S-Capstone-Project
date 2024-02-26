@@ -57,9 +57,67 @@ function selectOption(selected) {
     }
 }
 
-// function popularity() {
+function popularity() {
+    fetch('http://127.0.0.1:8000/api/ordercodes')
+        .then(res => res.text())
+        .then(data => {
+            console.log(data);
+            filterFunction(data);
+        })
+        .catch(err => console.error("Error: ", err))
+}
 
-// }
+
+function filterFunction(data) {
+    let allProductCodes = [];
+    let onlyDrinks = [];
+    allProductCodes = JSON.parse(data);
+    console.log(allProductCodes);
+    console.log(typeof allProductCodes);
+    for (let i = 0; i < allProductCodes.length; i++) {
+        if (allProductCodes[i].startsWith('D')) {
+            onlyDrinks.push(allProductCodes[i]);
+        }
+    }
+    console.log(onlyDrinks);
+
+    const drinksSerial = ['D001', 'D002', 'D003', 'D004', 'D005', 'D006', 'D007', 'D008', 'D009', 'D010', 'D011', 'D012'];
+    let frequencyCounts = [];
+    let count = 0;
+    for (let j = 0; j < drinksSerial.length; j++) {
+        for (let k = 0; k < onlyDrinks.length; k++) {
+            if (drinksSerial[j] === onlyDrinks[k]) {
+                count++;
+            }
+        }
+        frequencyCounts.push(count);
+        count = 0;
+    }
+
+    console.log(frequencyCounts);
+
+    let arrayOfObjects = [];
+    for (let u = 0; u < drinksSerial.length; u++) {
+        arrayOfObjects.push({
+            u: drinksSerial[u],
+            frequency: frequencyCounts[u]
+        });
+    }
+
+    console.log(arrayOfObjects);
+    arrayOfObjects.sort((a, b) => b.frequency - a.frequency);
+    console.log(arrayOfObjects);
+    productData.length = 0;
+    for (let o = 0; o < arrayOfObjects.length; o++) {
+        for (let p = 0; p < window.sharedData.drinksData.length; p++) {
+            if (arrayOfObjects[o].u === window.sharedData.drinksData[p].code) {
+                productData.push(window.sharedData.drinksData[p]);
+            }
+        }
+    }
+    console.log(productData);
+    renderDrinks(productData);
+}
 
 
 // function to call arrange prices by ascending order

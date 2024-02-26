@@ -40,7 +40,6 @@ function resetItemCount() {
 }
 
 
-
 const productData = [
 
 ];
@@ -58,9 +57,68 @@ function selectOption(selected) {
     }
 }
 
-// function popularity() {
 
-// }
+function popularity() {
+    fetch('http://127.0.0.1:8000/api/ordercodes')
+        .then(res => res.text())
+        .then(data => {
+            console.log(data);
+            filterFunction(data);
+        })
+        .catch(err => console.error("Error: ", err))
+};
+
+
+function filterFunction(data) {
+    let allProductCodes = [];
+    let onlyMacarons = [];
+    allProductCodes = JSON.parse(data);
+    console.log(allProductCodes);
+    console.log(typeof allProductCodes);
+    for (let i = 0; i < allProductCodes.length; i++) {
+        if (allProductCodes[i].startsWith('M')) {
+            onlyMacarons.push(allProductCodes[i]);
+        }
+    }
+    console.log(onlyMacarons);
+
+    const macaronsSerial = ['M001', 'M002', 'M003', 'M004', 'M005', 'M006', 'M007', 'M008', 'M009', 'M010', 'M011', 'M012', 'M013', 'M014', 'M015'];
+    let frequencyCounts = [];
+    let count = 0;
+    for (let j = 0; j < macaronsSerial.length; j++) {
+        for (let k = 0; k < onlyMacarons.length; k++) {
+            if (macaronsSerial[j] === onlyMacarons[k]) {
+                count++;
+            }
+        }
+        frequencyCounts.push(count);
+        count = 0;
+    }
+
+    console.log(frequencyCounts);
+
+    let arrayOfObjects = [];
+    for (let u = 0; u < macaronsSerial.length; u++) {
+        arrayOfObjects.push({
+            u: macaronsSerial[u],
+            frequency: frequencyCounts[u]
+        });
+    }
+
+    console.log(arrayOfObjects);
+    arrayOfObjects.sort((a, b) => b.frequency - a.frequency);
+    console.log(arrayOfObjects);
+    productData.length = 0;
+    for (let o = 0; o < arrayOfObjects.length; o++) {
+        for (let p = 0; p < window.sharedData.macaronsData.length; p++) {
+            if (arrayOfObjects[o].u === window.sharedData.macaronsData[p].code) {
+                productData.push(window.sharedData.macaronsData[p]);
+            }
+        }
+    }
+    console.log(productData);
+    renderMacarons(productData);
+}
 
 
 // function to call arrange prices by ascending order

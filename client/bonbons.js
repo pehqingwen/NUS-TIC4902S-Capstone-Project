@@ -57,9 +57,67 @@ function selectOption(selected) {
     }
 }
 
-// function popularity() {
+function popularity() {
+    fetch('http://127.0.0.1:8000/api/ordercodes')
+        .then(res => res.text())
+        .then(data => {
+            console.log(data);
+            filterFunction(data);
+        })
+        .catch(err => console.error("Error: ", err))
+}
 
-// }
+
+function filterFunction(data) {
+    let allProductCodes = [];
+    let onlyBonbons = [];
+    allProductCodes = JSON.parse(data);
+    console.log(allProductCodes);
+    console.log(typeof allProductCodes);
+    for (let i = 0; i < allProductCodes.length; i++) {
+        if (allProductCodes[i].startsWith('B')) {
+            onlyBonbons.push(allProductCodes[i]);
+        }
+    }
+    console.log(onlyBonbons);
+
+    const bonbonsSerial = ['B001', 'B002', 'B003', 'B004', 'B005', 'B006', 'B007', 'B008', 'B009', 'B010', 'B011', 'B012', 'B013', 'B014', 'B015'];
+    let frequencyCounts = [];
+    let count = 0;
+    for (let j = 0; j < bonbonsSerial.length; j++) {
+        for (let k = 0; k < onlyBonbons.length; k++) {
+            if (bonbonsSerial[j] === onlyBonbons[k]) {
+                count++;
+            }
+        }
+        frequencyCounts.push(count);
+        count = 0;
+    }
+
+    console.log(frequencyCounts);
+
+    let arrayOfObjects = [];
+    for (let u = 0; u < bonbonsSerial.length; u++) {
+        arrayOfObjects.push({
+            u: bonbonsSerial[u],
+            frequency: frequencyCounts[u]
+        });
+    }
+
+    console.log(arrayOfObjects);
+    arrayOfObjects.sort((a, b) => b.frequency - a.frequency);
+    console.log(arrayOfObjects);
+    productData.length = 0;
+    for (let o = 0; o < arrayOfObjects.length; o++) {
+        for (let p = 0; p < window.sharedData.bonbonsData.length; p++) {
+            if (arrayOfObjects[o].u === window.sharedData.bonbonsData[p].code) {
+                productData.push(window.sharedData.bonbonsData[p]);
+            }
+        }
+    }
+    console.log(productData);
+    renderBonbons(productData);
+}
 
 
 // function to call arrange prices by ascending order
