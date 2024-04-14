@@ -21,12 +21,16 @@ app.use(cors());
 //     password: 'root',
 //     database: 'onlinestore',
 // });
+const fs = require('fs');
 const db = mysql.createConnection({
-    host: '64.23.236.231',
-    port: 3306,
-    user: 'admin',
-    password: 'admin',
-    database: 'onlinestore',
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    ssl: {
+        ca: process.env.MYSQL_ATTR_SSL_CA,
+    },
 });
 
 db.connect(function (err) {
