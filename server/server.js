@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 // Serve static files from the "client" folder
 app.use(express.static(path.join(__dirname, '../client')));

@@ -17,8 +17,9 @@
   "name": "bitesoflove",
   "version": "1.0.0",
   "description": "school final project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "run"
   },
   "repository": {
