@@ -13,15 +13,21 @@ app.use(express.json());
 
 app.use(cors());
 
-// Database connection setup
+// // Database connection setup
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     port: 3306,
+//     user: 'root',
+//     password: 'root',
+//     database: 'onlinestore',
+// });
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: '64.23.236.231',
     port: 3306,
-    user: 'root',
-    password: 'root',
+    user: 'admin',
+    password: 'admin',
     database: 'onlinestore',
 });
-
 
 db.connect(function (err) {
     if (err) {
