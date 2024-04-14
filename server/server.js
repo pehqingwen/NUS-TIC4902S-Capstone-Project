@@ -8,7 +8,7 @@ const app = express();
 const port = 8000;
 
 // Serve static files from the "client" folder
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(express.json());
 
 app.use(cors());
