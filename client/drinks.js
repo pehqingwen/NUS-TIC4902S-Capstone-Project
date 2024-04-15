@@ -58,7 +58,7 @@ function selectOption(selected) {
 }
 
 function popularity() {
-    fetch('http://127.0.0.1:8000/api/ordercodes')
+    fetch('/api/ordercodes')
         .then(res => res.text())
         .then(data => {
             console.log(data);
