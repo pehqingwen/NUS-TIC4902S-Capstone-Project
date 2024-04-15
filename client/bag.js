@@ -752,7 +752,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Using the Fetch API to send the order data to your backend
-    fetch("http://127.0.0.1:8000/checkout", {
+    fetch("/checkout", {
       method: "POST",
       headers: {
         //usually for sending data to server; such as in POST/PUT requests
@@ -772,7 +772,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearBagItems();
         localStorage.clear();
 
-        window.location.href = "/client/main.html";
+        window.location.href = "/main.html";
       })
       .catch((error) => {
         console.error("Checkout failed:", error);
