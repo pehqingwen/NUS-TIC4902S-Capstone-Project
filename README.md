@@ -21,3 +21,7 @@ Connected to MySQL database
 13) Download live server (extension) in VSC
 14) inside client folder, use live server to open main.html file
 15) Use the app & see if it works.
+
+OR
+
+https://nus-tic4902s-capstone-project-d31a4927aa85.herokuapp.com/
